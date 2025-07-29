@@ -15,7 +15,7 @@ const features = [
     description: "Manage your microfrontends through a beautiful, user-friendly interface with drag-and-drop configuration and real-time preview."
   },
   {
-    icon: Globe,
+    icon: Layers,
     title: "Multi-environment Support",
     description: "Deploy different versions across DEV, UAT, PROD, and custom environments with environment-specific configurations."
   },
@@ -38,6 +38,11 @@ const features = [
     icon: GitBranch,
     title: "Canary Deployments",
     description: "Safely roll out changes with canary deployments, gradually directing traffic to new versions while monitoring performance and user feedback."
+  },
+  {
+    icon: Globe,
+    title: "Multi-cloud Support",
+    description: "Deploy across AWS, Azure, GCP, and other cloud providers with unified management and seamless failover capabilities."
   }
 ];
 

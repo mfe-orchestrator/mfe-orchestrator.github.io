@@ -28,7 +28,7 @@ const Hero = () => {
               </h1>
               
               <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl">
-                A centralized platform with intuitive UI for managing and orchestrating microfrontends across multiple environments. 
+                A centralized multi-cloud platform with intuitive UI for managing and orchestrating microfrontends across multiple environments. 
                 Deploy independently with canary support without rebuilding your entire frontend.
               </p>
             </div>
