@@ -11,8 +11,8 @@ import {
 const features = [
   {
     icon: FileText,
-    title: "JSON-based Configuration",
-    description: "Describe your microfrontends with simple, version-controlled JSON configurations that define dependencies, routes, and deployment settings."
+    title: "Intuitive Web Interface",
+    description: "Manage your microfrontends through a beautiful, user-friendly interface with drag-and-drop configuration and real-time preview."
   },
   {
     icon: Globe,
@@ -36,8 +36,8 @@ const features = [
   },
   {
     icon: GitBranch,
-    title: "Integration Ready",
-    description: "Seamlessly integrate with various microfrontend technologies and frameworks through our extensible architecture."
+    title: "Canary Deployments",
+    description: "Safely roll out changes with canary deployments, gradually directing traffic to new versions while monitoring performance and user feedback."
   }
 ];
 

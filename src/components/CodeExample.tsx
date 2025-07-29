@@ -50,12 +50,12 @@ const CodeExample = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center space-y-4 mb-12">
             <h2 className="text-3xl md:text-5xl font-bold text-foreground">
-              Simple
-              <span className="bg-gradient-primary bg-clip-text text-transparent"> Configuration</span>
+              Visual
+              <span className="bg-gradient-primary bg-clip-text text-transparent"> Management</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Define your entire microfrontend architecture with clean, readable JSON. 
-              No complex setups or boilerplate code required.
+              Configure your entire microfrontend architecture through our intuitive interface, with automatic JSON generation. 
+              No complex setups or technical knowledge required.
             </p>
           </div>
           
@@ -95,9 +95,9 @@ const CodeExample = () => {
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
                 <span className="text-primary font-bold">1</span>
               </div>
-              <h3 className="font-semibold text-foreground">Define Structure</h3>
+              <h3 className="font-semibold text-foreground">Configure Visually</h3>
               <p className="text-sm text-muted-foreground">
-                Describe your microfrontends, versions, and entry points
+                Use our intuitive interface to set up microfrontends and canary deployments
               </p>
             </div>
             

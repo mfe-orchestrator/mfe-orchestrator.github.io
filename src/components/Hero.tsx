@@ -28,8 +28,8 @@ const Hero = () => {
               </h1>
               
               <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl">
-                A centralized service for managing and orchestrating microfrontends across multiple environments. 
-                Deploy independently without rebuilding your entire frontend.
+                A centralized platform with intuitive UI for managing and orchestrating microfrontends across multiple environments. 
+                Deploy independently with canary support without rebuilding your entire frontend.
               </p>
             </div>
             
@@ -51,7 +51,7 @@ const Hero = () => {
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse animation-delay-200"></div>
-                JSON-based configuration
+                Intuitive web interface
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse animation-delay-400"></div>
