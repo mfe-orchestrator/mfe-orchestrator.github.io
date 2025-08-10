@@ -1,22 +1,45 @@
-# Welcome to your Lovable project
+# MFE Orchestrator Hub
 
-## Project info
+## Development
 
-**URL**: https://lovable.dev/projects/a07a681e-6fd3-4528-96bb-a67f66e5eb29
+### Getting Started
 
-## How can I edit this code?
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-There are several ways of editing your application.
+2. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-**Use Lovable**
+3. Open [http://localhost:8080](http://localhost:8080) in your browser.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a07a681e-6fd3-4528-96bb-a67f66e5eb29) and start prompting.
+## Deployment
 
-Changes made via Lovable will be committed automatically to this repo.
+This project is set up to deploy to GitHub Pages automatically. The site will be published at:
 
-**Use your preferred IDE**
+```
+https://mfe-orchestrator-hub.github.io/mfe-orchestrator-hub.github.io/
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Automatic Deployment
+
+1. Push your changes to the `main` branch
+2. GitHub Actions will automatically build and deploy the site to GitHub Pages
+3. The site will be available at the URL above within a few minutes
+
+### Manual Deployment
+
+If you need to deploy manually:
+
+1. Build the project:
+   ```bash
+   npm run build
+   ```
+
+2. The built files will be in the `dist` directory, which you can deploy to any static hosting service.
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
