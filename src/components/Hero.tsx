@@ -57,6 +57,10 @@ const Hero = () => {
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse animation-delay-400"></div>
                 CI/CD pipelines (GitHub, GitLab, Azure DevOps)
               </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse animation-delay-600"></div>
+                Git integration & GitOps
+              </div>
             </div>
           </div>
           

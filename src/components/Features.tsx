@@ -7,7 +7,9 @@ import {
   Layers, 
   GitBranch, 
   GitMerge, 
-  ShieldCheck 
+  ShieldCheck, 
+  GitPullRequest, 
+  Workflow 
 } from "lucide-react";
 
 const features = [
@@ -55,6 +57,16 @@ const features = [
     icon: ShieldCheck,
     title: "Secured by Design",
     description: "Security-first architecture with RBAC, secrets management, audit logs, and safe rollout strategies baked in."
+  },
+  {
+    icon: GitPullRequest,
+    title: "Git Integration",
+    description: "Import Git repositories and manage individual MFEs directly from your VCS; create pipelines on your Git projects."
+  },
+  {
+    icon: Workflow,
+    title: "GitOps (In progress)",
+    description: "We're implementing GitOps workflows to automatically promote versions across environments via PRs and policies."
   }
 ];
 
