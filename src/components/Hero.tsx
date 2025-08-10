@@ -51,11 +51,11 @@ const Hero = () => {
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse animation-delay-200"></div>
-                Intuitive web interface
+                Multi-cloud & local hosting
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse animation-delay-400"></div>
-                Version management
+                CI/CD pipelines (GitHub, GitLab, Azure DevOps)
               </div>
             </div>
           </div>

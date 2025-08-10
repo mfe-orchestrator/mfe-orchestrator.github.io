@@ -5,7 +5,9 @@ import {
   Rocket, 
   FileText, 
   Layers, 
-  GitBranch 
+  GitBranch, 
+  GitMerge, 
+  ShieldCheck 
 } from "lucide-react";
 
 const features = [
@@ -41,8 +43,18 @@ const features = [
   },
   {
     icon: Globe,
-    title: "Multi-cloud Support",
-    description: "Deploy across AWS, Azure, GCP, and other cloud providers with unified management and seamless failover capabilities."
+    title: "Multi-cloud & Local Hosting",
+    description: "Host locally (on‑prem) or deploy across AWS, Azure, and GCP with unified management and seamless failover."
+  },
+  {
+    icon: GitMerge,
+    title: "CI/CD Pipelines",
+    description: "Built-in pipelines for GitHub Actions, GitLab CI, and Azure DevOps to push built artifacts to the MFE Orchestrator Hub."
+  },
+  {
+    icon: ShieldCheck,
+    title: "Secured by Design",
+    description: "Security-first architecture with RBAC, secrets management, audit logs, and safe rollout strategies baked in."
   }
 ];
 
