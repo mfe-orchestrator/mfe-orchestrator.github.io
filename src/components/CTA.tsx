@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Github, BookOpen } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
 
 const CTA = () => {
   return (

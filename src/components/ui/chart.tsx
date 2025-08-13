@@ -67,7 +67,7 @@ ChartContainer.displayName = "Chart"
 
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   const colorConfig = Object.entries(config).filter(
-    ([_, config]) => config.theme || config.color
+    ([ , config]) => config.theme || config.color
   )
 
   if (!colorConfig.length) {
@@ -108,7 +108,10 @@ const ChartTooltipContent = React.forwardRef<
       hideIndicator?: boolean
       indicator?: "line" | "dot" | "dashed"
       nameKey?: string
-      labelKey?: string
+      labelKey?: string,
+      //eslint-disable-next-line @typescript-eslint/no-explicit-any
+      payload: any,
+      label: string
     }
 >(
   (
@@ -183,7 +186,7 @@ const ChartTooltipContent = React.forwardRef<
       >
         {!nestLabel ? tooltipLabel : null}
         <div className="grid gap-1.5">
-          {payload.map((item, index) => {
+          {/*payload.map((item : any, index) => {
             const key = `${nameKey || item.name || item.dataKey || "value"}`
             const itemConfig = getPayloadConfigFromPayload(config, item, key)
             const indicatorColor = color || item.payload.fill || item.color
@@ -246,7 +249,7 @@ const ChartTooltipContent = React.forwardRef<
                 )}
               </div>
             )
-          })}
+          })*/}
         </div>
       </div>
     )
@@ -256,7 +259,7 @@ ChartTooltipContent.displayName = "ChartTooltip"
 
 const ChartLegend = RechartsPrimitive.Legend
 
-const ChartLegendContent = React.forwardRef<
+/*const ChartLegendContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> &
     Pick<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> & {
@@ -312,7 +315,7 @@ const ChartLegendContent = React.forwardRef<
     )
   }
 )
-ChartLegendContent.displayName = "ChartLegend"
+ChartLegendContent.displayName = "ChartLegend"*/
 
 // Helper to extract item config from a payload.
 function getPayloadConfigFromPayload(
@@ -358,6 +361,6 @@ export {
   ChartTooltip,
   ChartTooltipContent,
   ChartLegend,
-  ChartLegendContent,
+  //ChartLegendContent,
   ChartStyle,
 }
