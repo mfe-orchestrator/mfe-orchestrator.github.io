@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import "./globals.css";
 import GoogleAnalyticsCustom from "@/components/GoogleAnalyticsCustom";
+import ParticlesBackground from "@/components/ParticlesBackground";
+import Navigation from "@/components/Navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,10 +29,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900 text-white`}
       >
         <GoogleAnalyticsCustom />
-        {children}
+        <ParticlesBackground />
+        <Navigation />
+        <main className="pt-20 min-h-screen">
+          <div className="relative z-10">
+            {children}
+          </div>
+        </main>
       </body>
     </html>
   );
