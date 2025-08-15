@@ -60,7 +60,7 @@ const CodeExample = () => {
             </p>
           </div>
           
-          <Card className="bg-surface/50 backdrop-blur-sm border-border/50 shadow-card">
+          {/* <Card className="bg-surface/50 backdrop-blur-sm border-border/50 shadow-card">
             <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle className="text-lg text-foreground">microfrontend-config.json</CardTitle>
               <Button 
@@ -89,7 +89,7 @@ const CodeExample = () => {
                 </pre>
               </div>
             </CardContent>
-          </Card>
+          </Card> */}
           
           <div className="grid md:grid-cols-3 gap-6 mt-12">
             <div className="text-center space-y-2">

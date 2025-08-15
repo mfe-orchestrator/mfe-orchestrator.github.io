@@ -80,12 +80,12 @@ const Features = () => {
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-foreground">
-            Orchestra. Scala.
-            <span className="bg-gradient-primary bg-clip-text text-transparent"> Ovunque.</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Gestisci e ospita i tuoi MFE su qualsiasi ambiente e cloud, con zero attriti.
-          </p>
+              Orchestrate. Scale.
+              <span className="bg-gradient-primary bg-clip-text text-transparent"> Anywhere.</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Manage and host your MFEs across any environment and cloud, with zero friction.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -115,11 +115,11 @@ const Features = () => {
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-foreground">
-              Rilascia più veloce.
-              <span className="bg-gradient-primary bg-clip-text text-transparent"> Git‑native. Secure by Design.</span>
+              Release faster.
+              <span className="bg-gradient-primary bg-clip-text text-transparent"> Secure by Design.</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Canary, CI/CD e integrazione Git profonda per rilasci veloci e affidabili.
+              Canary, CI/CD and deep Git integration for fast and reliable releases.
             </p>
           </div>
 

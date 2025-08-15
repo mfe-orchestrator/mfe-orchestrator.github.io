@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Github, Zap } from "lucide-react";
-/*import heroImage from "../../../assets/hero-microfrontends.jpg";*/
+import Image from "next/image";
+import heroImage from "@/assets/hero-microfrontends.jpg"
 
 const Hero = () => {
   return (
@@ -67,11 +68,11 @@ const Hero = () => {
           {/* Hero Image */}
           <div className="relative">
             <div className="relative bg-surface/30 backdrop-blur-sm border border-border/50 rounded-2xl p-8 shadow-card">
-              {/*<img 
+              <Image
                 src={heroImage} 
                 alt="Microfrontend Orchestration" 
                 className="w-full h-auto rounded-lg shadow-glow"
-              />*/}
+              />
               <div className="absolute -top-4 -right-4 bg-primary text-primary-foreground p-3 rounded-xl shadow-primary">
                 <Zap className="w-6 h-6" />
               </div>
