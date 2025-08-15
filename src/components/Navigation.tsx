@@ -18,8 +18,8 @@ export default function Navigation() {
               MFE Orchestrator
             </Link>
           </div>
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+          <div className="hidden md:flex items-center space-x-4">
+            <div className="flex items-baseline space-x-4">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -30,6 +30,12 @@ export default function Navigation() {
                 </Link>
               ))}
             </div>
+            <Link
+              href="/start-now"
+              className="ml-4 bg-gradient-to-r from-primary to-primary/80 text-white px-4 py-2 rounded-md text-sm font-medium hover:opacity-90 transition-opacity"
+            >
+              Start Now
+            </Link>
           </div>
         </div>
       </div>

@@ -88,7 +88,6 @@ export default function ParticlesBackground() {
                   enable: true,
                   mode: 'push',
                 },
-                resize: true,
               },
               modes: {
                 grab: {
