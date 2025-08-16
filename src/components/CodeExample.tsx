@@ -55,7 +55,7 @@ const CodeExample = () => {
               <span className="bg-gradient-primary bg-clip-text text-transparent"> Management</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Configure your entire microfrontend architecture through our intuitive interface, with automatic JSON generation. 
+              Configure your entire microfrontend architecture through our intuitive interface then integrate with your Frontend framework.  <br/>
               No complex setups or technical knowledge required.
             </p>
           </div>

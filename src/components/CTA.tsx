@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen } from "lucide-react";
+import Link from "next/link";
 
 const CTA = () => {
   return (
@@ -12,20 +13,23 @@ const CTA = () => {
               <span className="bg-gradient-primary bg-clip-text text-transparent"> Microfrontends?</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Join thousands of developers who are already using our platform to 
-              streamline their microfrontend architecture and deployment workflows.
+              Stop waiting time with build&deploy and cloud. Start now for free.
             </p>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="xl" className="group">
-              Get Started Free
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button variant="outline" size="xl">
-              <BookOpen className="w-5 h-5" />
-              Read Documentation
-            </Button>
+            <Link href="/start-now" className="group">
+              <Button variant="hero" size="xl" className="group cursor-pointer">
+                Get Started Free
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+            <Link href="/documentation" className="group">
+              <Button variant="outline" size="xl" className="cursor-pointer">
+                <BookOpen className="w-5 h-5" />
+                Read Documentation
+              </Button>
+            </Link>
           </div>
           
           <div className="flex items-center justify-center gap-8 text-sm text-muted-foreground">

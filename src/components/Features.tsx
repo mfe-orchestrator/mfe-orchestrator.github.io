@@ -58,19 +58,19 @@ const featuresOps = [
   },
   {
     icon: GitPullRequest,
-    title: "Git Integration",
+    title: "Git Integration (In progress)",
     description: "Import Git repositories and manage individual MFEs directly from your VCS; create pipelines on your Git projects."
   },
-  {
-    icon: GitCompare,
-    title: "GitOps (In progress)",
-    description: "We're implementing GitOps workflows to automatically promote versions across environments via PRs and policies."
-  },
-  {
-    icon: ShieldCheck,
-    title: "Secured by Design",
-    description: "Security-first architecture with RBAC, secrets management, audit logs, and safe rollout strategies baked in."
-  }
+  // {
+  //   icon: GitCompare,
+  //   title: "GitOps (In progress)",
+  //   description: "We're implementing GitOps workflows to automatically promote versions across environments via PRs and policies."
+  // },
+  // {
+  //   icon: ShieldCheck,
+  //   title: "Secured by Design",
+  //   description: "Security-first architecture with RBAC, secrets management, audit logs, and safe rollout strategies baked in."
+  // }
 ];
 
 const Features = () => {

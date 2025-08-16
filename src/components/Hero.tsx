@@ -2,66 +2,51 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Github, Zap } from "lucide-react";
 import Image from "next/image";
 import heroImage from "@/assets/hero-microfrontends.jpg"
+import { HeroLink } from "./ui/HeroLink";
+import Link from "next/link";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-50" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239560F0' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-      }}></div>
-      
-      <div className="container mx-auto px-4 py-20 relative z-10">
+    <section className="py-10 relative min-h-screen flex flex-col items-center justify-center bg-gradient-hero overflow-hidden">
+      <div className="justify-center flex">
+        <div className="inline-flex items-center gap-2 bg-surface/50 backdrop-blur-sm border border-border/50 rounded-full px-4 py-2 text-sm text-muted-foreground">
+          <Zap className="w-4 h-4 text-primary" />
+          Coming Soon
+        </div>
+      </div>
+      <div className="container mx-auto px-4 pt-5 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="text-center lg:text-left space-y-8">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 bg-surface/50 backdrop-blur-sm border border-border/50 rounded-full px-4 py-2 text-sm text-muted-foreground">
-                <Zap className="w-4 h-4 text-primary" />
-                Microfrontend Orchestration Platform
-              </div>
               
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground">
-                Orchestrate
+              
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
+                Streamline your
                 <span className="bg-gradient-primary bg-clip-text text-transparent"> Microfrontends</span>
                 <br />
-                with Ease
+                Architecture
               </h1>
               
               <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl">
                 A centralized multi-cloud platform with intuitive UI for managing and orchestrating microfrontends across multiple environments. 
-                Deploy independently with canary support without rebuilding your entire frontend.
               </p>
+              <p className="text-primary pt-2 text-xl md:text-2xl text-muted-foreground max-w-2xl font-bold">Like Kubernetes... but for frontend</p>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button variant="hero" size="xl" className="group">
-                Get Started
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <Link href="/start-now">
+              <Button variant="hero" size="xl" className="group cursor-pointer">
+                  Get Started
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="outline" size="xl" className="group">
+              </Link>
+              <Link href="https://github.com/Lory1990/micro-frontend-orchestrator-hub">
+              <Button variant="outline" size="xl" className="group cursor-pointer">
                 <Github className="w-5 h-5" />
                 View on GitHub
               </Button>
-            </div>
-            
-            <div className="flex items-center gap-8 justify-center lg:justify-start text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                Multi-environment support
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary rounded-full animate-pulse animation-delay-200"></div>
-                Multi-cloud & local hosting
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary rounded-full animate-pulse animation-delay-400"></div>
-                CI/CD pipelines (GitHub, GitLab, Azure DevOps)
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary rounded-full animate-pulse animation-delay-600"></div>
-                Git integration & GitOps
-              </div>
+              </Link>
             </div>
           </div>
           
@@ -90,6 +75,25 @@ const Hero = () => {
             </div>
           </div>
         </div>
+
+        <div className=" py-10 flex items-center gap-8 justify-center lg:justify-start text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                Easy to use UI
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse animation-delay-200"></div>
+                Multi-cloud & local hosting
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse animation-delay-400"></div>
+                CI/CD pipelines (GitHub, GitLab, Azure DevOps)
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse animation-delay-600"></div>
+                Canary Distribution
+              </div>
+            </div>
       </div>
     </section>
   );
