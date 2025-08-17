@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import './style.css'
 import FAQList from './FAQList';
-import { WaitingListSection } from "@/components/WaitingListSection";
+import { WaitingListSection } from "@/components/waitingList/WaitingListSection";
 
 export const metadata: Metadata = {
   title: "MFE Orchestrator - FAQ",

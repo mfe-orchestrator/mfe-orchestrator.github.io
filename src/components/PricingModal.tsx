@@ -1,7 +1,7 @@
 'use client';
 
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { WaitingListForm } from "./WaitingListForm";
+import { WaitingListForm } from "./waitingList/WaitingListForm";
 
 interface PricingModalProps {
   isOpen: boolean;

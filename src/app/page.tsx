@@ -3,7 +3,7 @@ import Hero from "../components/Hero";
 import CodeExample from "../components/CodeExample";
 import CTA from "../components/CTA";
 import { Metadata } from "next";
-import { WaitingListSection } from "@/components/WaitingListSection";
+import { WaitingListSection } from "@/components/waitingList/WaitingListSection";
 
 export const metadata: Metadata = {
   title: "MFE Orchestrator - Microfrontend Versioning & Orchestration | Start now for free",

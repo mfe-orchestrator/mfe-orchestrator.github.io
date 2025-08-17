@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Zap, Shield, Users, Server, GitBranch, Clock, CheckCircle } from "lucide-react";
 import { PricingCardButton } from "@/components/PricingCardButton";
-import { WaitingListSection } from "@/components/WaitingListSection";
+import { WaitingListSection } from "@/components/waitingList/WaitingListSection";
 
 const pricingPlans = [
   {

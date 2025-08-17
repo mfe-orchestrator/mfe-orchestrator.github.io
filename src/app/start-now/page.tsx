@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Code } from 'lucide-react';
 import Link from 'next/link';
-import { WaitingListSection } from '@/components/WaitingListSection';
+import { WaitingListSection } from "@/components/waitingList/WaitingListSection";
 
 export default function StartNowPage() {
   return (<>
