@@ -2,9 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Github, Zap } from "lucide-react";
 import Image from "next/image";
 import heroImage from "@/assets/hero-microfrontends.jpg"
-import { HeroLink } from "./ui/HeroLink";
 import Link from "next/link";
-import { WaitingListForm } from "./WaitingListForm";
 
 const Hero = () => {
   return (
