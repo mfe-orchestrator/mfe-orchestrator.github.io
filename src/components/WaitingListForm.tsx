@@ -33,7 +33,7 @@ const WaitingListFormContent  : React.FC<WaitingListFormContentProps> = ({ acces
     }
 
     if (!executeRecaptcha) {
-      console.log("icas22")
+      console.log("reCAPTCHA not available. Please try again.")
       toast.error('reCAPTCHA not available. Please try again.');
       return;
     }
