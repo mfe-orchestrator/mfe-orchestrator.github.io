@@ -4,6 +4,7 @@ import Image from "next/image";
 import heroImage from "@/assets/hero-microfrontends.jpg"
 import { HeroLink } from "./ui/HeroLink";
 import Link from "next/link";
+import { WaitingListForm } from "./WaitingListForm";
 
 const Hero = () => {
   return (
@@ -35,11 +36,17 @@ const Hero = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <Link href="/start-now">
+            {/* <Link href="/start-now">
               <Button variant="hero" size="xl" className="group cursor-pointer">
                   Get Started
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
+              </Link> */}
+              <Link href="#join-the-waiting-list">
+                <Button variant="hero" size="xl" className="bg-primary group cursor-pointer">
+                    Join The Waiting List
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
               </Link>
               <Link href="https://github.com/Lory1990/micro-frontend-orchestrator-hub">
               <Button variant="outline" size="xl" className="group cursor-pointer">
@@ -76,7 +83,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className=" py-10 flex items-center gap-8 justify-center lg:justify-start text-sm text-muted-foreground">
+        <div className="py-10 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 justify-center lg:justify-start text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                 Easy to use UI

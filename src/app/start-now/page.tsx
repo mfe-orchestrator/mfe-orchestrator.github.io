@@ -3,9 +3,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Code } from 'lucide-react';
 import Link from 'next/link';
+import { WaitingListSection } from '@/components/WaitingListSection';
 
 export default function StartNowPage() {
-  return (
+  return (<>
     <div className="container mx-auto px-4 py-12 space-y-8">
       <div className="text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
@@ -14,6 +15,12 @@ export default function StartNowPage() {
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
           Deploy your first microfrontend in minutes with our easy-to-use Docker setup
         </p>
+        <div className="mt-4 p-4 bg-yellow-100 dark:bg-yellow-900/50 border border-yellow-300 dark:border-yellow-700 rounded-lg max-w-3xl mx-auto">
+          <p className="text-yellow-800 dark:text-yellow-200 text-sm">
+            ⚠️ <span className="font-semibold">Heads up!</span> This project is in early stage and may contain bugs. 
+            We're actively working on improvements and appreciate your understanding and feedback.
+          </p>
+        </div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-8">
@@ -91,21 +98,10 @@ export default function StartNowPage() {
           <CardContent>
             <div className="space-y-6">
               <p className="text-muted-foreground">
-                Need more control? Self-host MFE Orchestrator in your own infrastructure with our enterprise plan:
+                Need absolute control? Self-host MFE Orchestrator in your own infrastructure with our enterprise plan:
               </p>
 
               <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <svg className="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-medium">Dedicated Support</h4>
-                    <p className="text-sm text-muted-foreground">24/7 priority support from our engineering team</p>
-                  </div>
-                </li>
                 <li className="flex items-start gap-3">
                   <div className="flex-shrink-0 mt-1">
                     <svg className="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -124,15 +120,26 @@ export default function StartNowPage() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-medium">Advanced Features</h4>
-                    <p className="text-sm text-muted-foreground">Access to enterprise features and early releases</p>
+                    <h4 className="font-medium">Team Collaboration</h4>
+                    <p className="text-sm text-muted-foreground">Role-based access control and team management</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="flex-shrink-0 mt-1">
+                    <svg className="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-medium">Security First</h4>
+                    <p className="text-sm text-muted-foreground">Enterprise-grade security and compliance standards</p>
                   </div>
                 </li>
               </ul>
 
               <div className="pt-2">
                 <Button variant="outline" className="w-full" disabled>
-                  Coming Soon
+                  New features coming soon
                 </Button>
               </div>
             </div>
@@ -158,5 +165,7 @@ export default function StartNowPage() {
         </Card>
       </div>
     </div>
+    <WaitingListSection />
+    </>
   );
 }

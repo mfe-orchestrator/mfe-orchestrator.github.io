@@ -46,7 +46,7 @@ const CodeExample = () => {
   };
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center space-y-4 mb-12">

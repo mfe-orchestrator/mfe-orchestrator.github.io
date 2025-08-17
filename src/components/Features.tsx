@@ -76,8 +76,7 @@ const featuresOps = [
 const Features = () => {
   return (
     <>
-      <section className="py-20 bg-gradient-surface">
-        <div className="container mx-auto px-4">
+        <section className="py-20 container mx-auto px-4 py-20">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-foreground">
               Orchestrate. Scale.
@@ -108,7 +107,6 @@ const Features = () => {
               </Card>
             ))}
           </div>
-        </div>
       </section>
 
       <section className="py-20">

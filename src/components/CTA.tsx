@@ -13,23 +13,29 @@ const CTA = () => {
               <span className="bg-gradient-primary bg-clip-text text-transparent"> Microfrontends?</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Stop waiting time with build&deploy and cloud. Start now for free.
+              Want to partecipate to the public build of this project? 
             </p>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="#join-the-waiting-list">
+                <Button variant="hero" size="xl" className="group cursor-pointer bg-primary">
+                    Join The Waiting List
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+            </Link>
             <Link href="/start-now" className="group">
               <Button variant="hero" size="xl" className="group cursor-pointer">
                 Get Started Free
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Link href="/documentation" className="group">
+            {/* <Link href="/documentation" className="group">
               <Button variant="outline" size="xl" className="cursor-pointer">
                 <BookOpen className="w-5 h-5" />
                 Read Documentation
               </Button>
-            </Link>
+            </Link> */}
           </div>
           
           <div className="flex items-center justify-center gap-8 text-sm text-muted-foreground">

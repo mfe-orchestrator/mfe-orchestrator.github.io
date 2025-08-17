@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import './style.css'
 import FAQList from './FAQList';
+import { WaitingListSection } from "@/components/WaitingListSection";
 
 export const metadata: Metadata = {
   title: "MFE Orchestrator - FAQ",
@@ -45,6 +46,7 @@ export const metadata: Metadata = {
 export default function FAQPage() {
 
   return (
+    <>
     <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12">
       <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
@@ -57,5 +59,7 @@ export default function FAQPage() {
 
       <FAQList />
     </div>
+    <WaitingListSection />
+    </>
   );
 }

@@ -190,6 +190,17 @@
   background-clip: text;
 }
 
+/* Smooth scrolling for all browsers */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Target specific elements that will be scrolled to */
+[id] {
+  scroll-margin-top: 8rem;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   min-height: 100vh;
@@ -199,6 +210,8 @@ body {
     var(--gradient-end) 100%
   );
   background-attachment: fixed;
+  scroll-padding-top: 8rem; /* Add padding to account for fixed header */
+  -webkit-overflow-scrolling: touch; /* Better scrolling on iOS devices */
 }
 
 /* Add a subtle grid pattern */

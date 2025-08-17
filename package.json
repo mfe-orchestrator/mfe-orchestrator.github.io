@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --turbopack --port 3020",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -54,6 +54,7 @@
     "react": "19.1.0",
     "react-day-picker": "^9.8.1",
     "react-dom": "19.1.0",
+    "react-google-recaptcha-v3": "^1.11.0",
     "react-hook-form": "^7.62.0",
     "react-resizable-panels": "^3.0.4",
     "recharts": "^3.1.2",

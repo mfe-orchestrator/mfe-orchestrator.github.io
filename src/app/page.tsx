@@ -3,7 +3,7 @@ import Hero from "../components/Hero";
 import CodeExample from "../components/CodeExample";
 import CTA from "../components/CTA";
 import { Metadata } from "next";
-import { Zap } from "lucide-react";
+import { WaitingListSection } from "@/components/WaitingListSection";
 
 export const metadata: Metadata = {
   title: "MFE Orchestrator - Microfrontend Versioning & Orchestration | Start now for free",
@@ -49,6 +49,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Hero />
+      <WaitingListSection />
       <Features />
       <CodeExample />
       <CTA />

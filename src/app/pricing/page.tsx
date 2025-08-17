@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Zap, Shield, Users, Server, GitBranch, Clock, CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { PricingCardButton } from "@/components/PricingCardButton";
+import { WaitingListSection } from "@/components/WaitingListSection";
 
 const pricingPlans = [
   {
@@ -57,9 +58,9 @@ const pricingPlans = [
 const includedFeatures = [
   "Unlimited deployments",
   "Version history",
-  "Basic monitoring",
-  "SSL certificates",
-  "Global CDN"
+  "Team collaboration",
+  "CI/CD integration",
+  "Cloud integration"
 ];
 
 export default function PricingPage() {
@@ -114,12 +115,11 @@ export default function PricingPage() {
                     </ul>
                   </CardContent>
                   <CardFooter>
-                    <Button 
-                      className={`w-full ${plan.popular ? 'bg-primary hover:bg-primary/90' : 'bg-secondary hover:bg-secondary/80'}`}
-                      size="lg"
-                    >
-                      {plan.cta}
-                    </Button>
+                    <PricingCardButton 
+                      isPopular={plan.popular}
+                      cta={plan.cta}
+                      selectedPlan={plan.name}
+                    />
                   </CardFooter>
                 </Card>
               </div>
@@ -127,7 +127,7 @@ export default function PricingPage() {
           </div>
 
           <div className="mt-16 bg-surface/50 backdrop-blur-sm p-8 rounded-xl border border-border/50 max-w-4xl mx-auto">
-            <h3 className="text-xl font-semibold mb-4 text-center">Everything in all plans</h3>
+            <h3 className="text-xl font-semibold mb-4 text-center text-white">Everything in all plans</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-6">
               {includedFeatures.map((feature, index) => (
                 <div key={index} className="flex items-center">
@@ -138,7 +138,7 @@ export default function PricingPage() {
             </div>
           </div>
 
-          <div className="mt-16 text-center">
+          {/* <div className="mt-16 text-center">
             <p className="text-muted-foreground mb-6">
               Need something custom? We've got you covered.
             </p>
@@ -149,9 +149,10 @@ export default function PricingPage() {
                 <path d="m12 5 7 7-7 7"></path>
               </svg>
             </Button>
-          </div>
+          </div> */}
         </div>
       </section>
+      <WaitingListSection />
     </div>
   );
 }
