@@ -79,6 +79,9 @@ const WaitingListFormContent  : React.FC<WaitingListFormContentProps> = ({ acces
           <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           <Input
             type="email"
+            name="email"
+            id="email"
+            autoComplete='email'
             placeholder="Your email address"
             className="pl-12 h-14 text-lg border-2 border-primary/20 focus:border-primary/50 transition-colors text-foreground"
             value={email}
