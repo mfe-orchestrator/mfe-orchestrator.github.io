@@ -28,6 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {process.env.NEXT_PUBLIC_GOOGLE_SEARCH_CONSOLE_SITE_VERIFICATION && <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GOOGLE_SEARCH_CONSOLE_SITE_VERIFICATION} />}
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900 text-white`}>
         <GoogleAnalyticsCustom />
         <ParticlesBackground />
