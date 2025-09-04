@@ -46,7 +46,7 @@ export default function StartNowPage() {
                   cd mfe-orchestrator<br /><br />
                   
                   # Create a docker-compose.yml file<br />
-                  curl -o docker-compose.yml https://raw.githubusercontent.com/Lory1990/micro-frontend-orchestrator-hub/refs/heads/main/docker-compose.yaml<br /><br />
+                  curl -o docker-compose.yml https://raw.githubusercontent.com/mfe-orchestrator-hub/mfe-orchestrator-hub/refs/heads/main/docker-compose.yaml<br /><br />
                   
                   # Start the services<br />
                   docker-compose up -d
@@ -67,7 +67,7 @@ export default function StartNowPage() {
                 </Button>
                 <Button variant="outline" asChild>
                   <a 
-                    href="https://github.com/Lory1990/micro-frontend-orchestrator-hub" 
+                    href="https://github.com/mfe-orchestrator-hub" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-full sm:w-auto"
