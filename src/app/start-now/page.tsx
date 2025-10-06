@@ -46,7 +46,7 @@ export default function StartNowPage() {
                   cd mfe-orchestrator<br /><br />
                   
                   # Create a docker-compose.yml file<br />
-                  curl -o docker-compose.yml https://raw.githubusercontent.com/mfe-orchestrator-hub/mfe-orchestrator-hub/refs/heads/main/docker-compose.yaml<br /><br />
+                  curl -o docker-compose.yml https://raw.githubusercontent.com/mfe-orchestrator/mfe-orchestrator/refs/heads/main/docker-compose.yaml<br /><br />
                   
                   # Start the services<br />
                   docker-compose up -d
@@ -61,13 +61,13 @@ export default function StartNowPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Button asChild>
-                  <Link href="/documentation/docs/installation/docker-compose" className="w-full sm:w-auto">
+                  <Link href="https://mfe-orchestrator.github.io/documentation/docs/installation/docker-compose" className="w-full sm:w-auto">
                     View Full Documentation
                   </Link>
                 </Button>
                 <Button variant="outline" asChild>
                   <a 
-                    href="https://github.com/mfe-orchestrator-hub" 
+                    href="https://github.com/mfe-orchestrator" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-full sm:w-auto"
@@ -157,7 +157,7 @@ export default function StartNowPage() {
               Check out our comprehensive documentation for detailed guides and API references.
             </p>
             <Button variant="outline" asChild>
-              <Link href="/documentation" className="w-full sm:w-auto">
+              <Link href="https://mfe-orchestrator.github.io/documentation" className="w-full sm:w-auto">
                 View Documentation
               </Link>
             </Button>

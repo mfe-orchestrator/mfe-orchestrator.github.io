@@ -22,11 +22,11 @@ export const metadata: Metadata = {
     title: "MFE Orchestrator - Microfrontend Versioning & Orchestration",
     description:
       "An open-source solution to orchestrate and version your microfrontends. Multicloud-ready, simple, and fast.",
-    url: "https://mfe-orchestrator-hub.github.io",
+    url: "https://mfe-orchestrator.github.io",
     siteName: "MFE Orchestrator",
     images: [
       {
-        url: "https://mfe-orchestrator-hub.github.io/og-image.png",
+        url: "https://mfe-orchestrator.github.io/og-image.png",
         width: 1200,
         height: 630,
         alt: "MFE Orchestrator",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: "MFE Orchestrator - Microfrontend Versioning & Orchestration",
     description:
       "Easily manage versions, buckets, and canary releases of your microfrontends with MFE Orchestrator.",
-    images: ["https://mfe-orchestrator-hub.github.io/og-image.png"],
+    images: ["https://mfe-orchestrator.github.io/og-image.png"],
   },
 };
  

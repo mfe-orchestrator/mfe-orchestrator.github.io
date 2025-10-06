@@ -46,7 +46,7 @@ const Hero = () => {
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
-              <Link href="https://github.com/mfe-orchestrator-hub">
+              <Link href="https://github.com/mfe-orchestrator">
               <Button variant="outline" size="xl" className="group cursor-pointer">
                 <Github className="w-5 h-5" />
                 View on GitHub

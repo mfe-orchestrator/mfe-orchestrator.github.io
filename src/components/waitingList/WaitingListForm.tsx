@@ -42,7 +42,7 @@ const WaitingListFormContent  : React.FC<WaitingListFormContentProps> = ({ acces
     
     try {
       const recaptchaToken = await executeRecaptcha('waiting_list_submit');
-      const response = await fetch('https://mfe-orchestrator.defrancesco.ovh/api/waiting-list', {
+      const response = await fetch('https://console.mfe-orchestrator.dev/api/waiting-list', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

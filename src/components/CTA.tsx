@@ -30,12 +30,6 @@ const CTA = () => {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            {/* <Link href="/documentation" className="group">
-              <Button variant="outline" size="xl" className="cursor-pointer">
-                <BookOpen className="w-5 h-5" />
-                Read Documentation
-              </Button>
-            </Link> */}
           </div>
           
           <div className="flex items-center justify-center gap-8 text-sm text-muted-foreground">

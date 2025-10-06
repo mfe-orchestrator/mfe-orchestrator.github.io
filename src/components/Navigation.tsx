@@ -10,7 +10,7 @@ export default function Navigation() {
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Documentation', href: '/documentation' },
+    { name: 'Documentation', href: 'https://mfe-orchestrator.github.io/documentation' },
     { name: 'Pricing', href: '/pricing' },
     { name: 'FAQ', href: '/faq' },
   ];

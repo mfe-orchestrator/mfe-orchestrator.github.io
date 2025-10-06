@@ -20,11 +20,11 @@ export const metadata: Metadata = {
     title: "MFE Orchestrator - FAQ",
     description:
       "Discover how MFE Orchestrator works: setup, versioning, canary releases, multicloud support, and more.",
-    url: "https://mfe-orchestrator-hub.github.io/faq",
+    url: "https://mfe-orchestrator.github.io/faq",
     siteName: "MFE Orchestrator",
     images: [
       {
-        url: "https://mfe-orchestrator-hub.github.io/faq-og-image.png",
+        url: "https://mfe-orchestrator.github.io/faq-og-image.png",
         width: 1200,
         height: 630,
         alt: "MFE Orchestrator FAQ",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: "MFE Orchestrator - FAQ",
     description:
       "Get clear answers to the most common questions about MFE Orchestrator: setup, versioning, and orchestration.",
-    images: ["https://mfe-orchestrator-hub.github.io/faq-og-image.png"],
+    images: ["https://mfe-orchestrator.github.io/faq-og-image.png"],
   },
 };
 
