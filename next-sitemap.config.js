@@ -1,5 +1,5 @@
 module.exports = {
-    siteUrl: 'https://mfe-orchestrator.github.io',
+    siteUrl: 'https://mfe-orchestrator.dev',
     generateRobotsTxt: true,
     changefreq: 'daily',
     priority: 0.7,

@@ -4,6 +4,46 @@ import { Button } from '@/components/ui/button';
 import { Code } from 'lucide-react';
 import Link from 'next/link';
 import { WaitingListSection } from "@/components/waitingList/WaitingListSection";
+import { Metadata } from "next";
+
+export const metadata : Metadata = {
+  title: "MFE Orchestrator - Start Now",
+  alternates: {
+    canonical: 'https://mfe-orchestrator.dev/start-now',
+  },
+  description: "Get started with MFE Orchestrator in minutes with our easy-to-use Docker setup",
+  keywords: [
+    "MFE Orchestrator Start Now",
+    "microfrontend start now",
+    "frontend orchestration start now",
+    "microfrontend versioning start now",
+    "canary releases start now",
+    "multicloud frontend start now",
+    "Kubernetes for frontend start now",
+  ],
+  openGraph: {
+    title: "MFE Orchestrator - Start Now",
+    description: "Get started with MFE Orchestrator in minutes with our easy-to-use Docker setup",
+    url: "https://mfe-orchestrator.dev/start-now",
+    siteName: "MFE Orchestrator",
+    // images: [
+    //   {
+    //     url: "https://mfe-orchestrator.dev/start-now-og-image.png",
+    //     width: 1200,
+    //     height: 630,
+    //     alt: "MFE Orchestrator Start Now",
+    //   },
+    // ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MFE Orchestrator - Start Now",
+    description: "Get started with MFE Orchestrator in minutes with our easy-to-use Docker setup",
+    //images: ["https://mfe-orchestrator.github.io/start-now-og-image.png"],
+  },
+}
 
 export default function StartNowPage() {
   return (<>
@@ -61,7 +101,7 @@ export default function StartNowPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Button asChild>
-                  <Link href="https://mfe-orchestrator.github.io/documentation/docs/installation/docker-compose" className="w-full sm:w-auto">
+                  <Link href="https://mfe-orchestrator.dev/documentation/docs/installation/docker-compose" className="w-full sm:w-auto">
                     View Full Documentation
                   </Link>
                 </Button>
@@ -157,7 +197,7 @@ export default function StartNowPage() {
               Check out our comprehensive documentation for detailed guides and API references.
             </p>
             <Button variant="outline" asChild>
-              <Link href="https://mfe-orchestrator.github.io/documentation" className="w-full sm:w-auto">
+              <Link href="https://mfe-orchestrator.dev/documentation" className="w-full sm:w-auto">
                 View Documentation
               </Link>
             </Button>

@@ -1,7 +1,48 @@
+import { Metadata } from "next";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Zap, Shield, Users, Server, GitBranch, Clock, CheckCircle } from "lucide-react";
 import { PricingCardButton } from "@/components/PricingCardButton";
 import { WaitingListSection } from "@/components/waitingList/WaitingListSection";
+
+export const metadata: Metadata = {
+  title: "MFE Orchestrator - Pricing",
+  alternates: {
+    canonical: 'https://mfe-orchestrator.dev/pricing',
+  },
+  description: "Choose the perfect plan for your team's needs. Start for free, upgrade when you're ready.",
+  keywords: [
+    "MFE Orchestrator Pricing",
+    "microfrontend pricing",
+    "frontend orchestration pricing",
+    "microfrontend versioning pricing",
+    "canary releases pricing",
+    "multicloud frontend pricing",
+    "Kubernetes for frontend pricing",
+  ],
+  openGraph: {
+    title: "MFE Orchestrator - Pricing",
+    description: "Choose the perfect plan for your team's needs. Start for free, upgrade when you're ready.",
+    url: "https://mfe-orchestrator.dev/pricing",
+    siteName: "MFE Orchestrator",
+    // images: [
+    //   {
+    //     url: "https://mfe-orchestrator.dev/pricing-og-image.png",
+    //     width: 1200,
+    //     height: 630,
+    //     alt: "MFE Orchestrator Pricing",
+    //   },
+    // ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MFE Orchestrator - Pricing",
+    description: "Choose the perfect plan for your team's needs. Start for free, upgrade when you're ready.",
+    //images: ["https://mfe-orchestrator.github.io/pricing-og-image.png"],
+  },
+}
+
 
 const pricingPlans = [
   {

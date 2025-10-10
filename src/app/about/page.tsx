@@ -1,8 +1,47 @@
 import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Metadata } from "next";
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CheckCircle, Cloud, Code, Cpu, GitBranch, GitCommit, GitFork, GitPullRequest, Globe, Layers, Package, RefreshCw, Server, ShieldCheck, Zap } from 'lucide-react';
 import { WaitingListSection } from "@/components/waitingList/WaitingListSection";
+
+export const metadata : Metadata = {
+  title: "MFE Orchestrator - About",
+  alternates: {
+    canonical: 'https://mfe-orchestrator.dev/about',
+  },
+  description: "The open-source solution for seamless microfrontend orchestration and versioning",
+  keywords: [
+    "MFE Orchestrator",
+    "microfrontend orchestration",
+    "microfrontend versioning",
+    "microfrontend canary releases",
+    "microfrontend multicloud",
+    "microfrontend"
+  ],
+  openGraph: {
+    title: "MFE Orchestrator - About",
+    description: "The open-source solution for seamless microfrontend orchestration and versioning",
+    url: "https://mfe-orchestrator.dev/about",
+    siteName: "MFE Orchestrator",
+    // images: [
+    //   {
+    //     url: "https://mfe-orchestrator.dev/about-og-image.png",
+    //     width: 1200,
+    //     height: 630,
+    //     alt: "MFE Orchestrator About",
+    //   },
+    // ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MFE Orchestrator - About",
+    description: "The open-source solution for seamless microfrontend orchestration and versioning",
+    //images: ["https://mfe-orchestrator.dev/about-og-image.png"],
+  },
+};
 
 export default function AboutPage() {
   return (
