@@ -6,6 +6,7 @@ import "./globals.css";
 import GoogleAnalyticsCustom from "@/components/GoogleAnalyticsCustom";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,17 +56,19 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         {process.env.NEXT_PUBLIC_GOOGLE_SEARCH_CONSOLE_SITE_VERIFICATION && <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GOOGLE_SEARCH_CONSOLE_SITE_VERIFICATION} />}
+        <script type="text/javascript" src="https://embeds.iubenda.com/widgets/13392720-579d-4871-93ad-590c86da4175.js"></script>
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900 text-white`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900 text-white flex flex-col min-h-screen`}>
         <GoogleAnalyticsCustom />
         <ParticlesBackground />
         <Navigation />
         <Toaster position="top-right" richColors />
-        <main className="pt-20 min-h-screen">
+        <main className="pt-20 flex-grow">
           <div className="relative z-10">
             {children}
           </div>
         </main>
+        <Footer />
       </body>
     </html>
   );
