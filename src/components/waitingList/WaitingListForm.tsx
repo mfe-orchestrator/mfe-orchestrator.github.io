@@ -58,14 +58,14 @@ const WaitingListFormContent  : React.FC<WaitingListFormContentProps> = ({ acces
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to join waiting list');
+        throw new Error(data.error || 'Failed to join to community');
       }
       
-      toast.success('Successfully joined the waiting list!');
+      toast.success('Successfully joined to MFE orchestrator community!');
       setEmail('');
     } catch (error) {
-      console.error('Error joining waiting list:', error);
-      const errorMessage = error instanceof Error ? error.message : 'Failed to join waiting list. Please try again.';
+      console.error('Error joining community:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Failed to join community. Please try again.';
       toast.error(errorMessage);
     } finally {
       setIsLoading(false);
@@ -110,7 +110,7 @@ const WaitingListFormContent  : React.FC<WaitingListFormContentProps> = ({ acces
         </Button>
       </div>
       <p className="text-sm text-muted-foreground mt-3 text-center">
-        Join 100+ developers on the waiting list. No spam, unsubscribe anytime.
+        Join 100+ developers on the MFE orchestrator community. No spam, unsubscribe anytime.
       </p>
     </form>
   );

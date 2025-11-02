@@ -20,7 +20,7 @@ const CTA = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="#join-the-waiting-list">
                 <Button variant="hero" size="xl" className="group cursor-pointer bg-primary">
-                    Join The Waiting List
+                    Join The Community
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
             </Link>

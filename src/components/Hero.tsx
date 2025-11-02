@@ -22,7 +22,7 @@ const Hero = () => {
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
                 Like
-                <span className="bg-gradient-primary bg-clip-text text-transparent"> Kubernetes</span>...
+                <span className="bg-gradient-primary bg-clip-text text-transparent"> Kubernetes...</span>
                 <br />
                 but for frontend
               </h1>
@@ -42,7 +42,7 @@ const Hero = () => {
               </Link> */}
               <Link href="#join-the-waiting-list">
                 <Button variant="hero" size="xl" className="bg-primary group cursor-pointer">
-                  Join The Waiting List
+                  Join The Community
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
