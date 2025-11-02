@@ -16,7 +16,7 @@ export default function Footer() {
   ];
 
   const legalLinks = [
-    // { name: 'Privacy Policy', href: 'https://www.iubenda.com/privacy-policy/73426124', className: 'iubenda-black iubenda-noiframe iubenda-embed iubenda-noiframe' },
+    { name: 'Privacy Policy', href: 'https://www.iubenda.com/privacy-policy/73426124', className: 'iubenda-black iubenda-noiframe iubenda-embed iubenda-noiframe' },
     { name: 'Cookie Policy', href: 'https://www.iubenda.com/privacy-policy/73426124/cookie-policy', className: 'iubenda-black iubenda-noiframe iubenda-embed iubenda-noiframe' },
   ];
 
@@ -71,15 +71,6 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">Legal</h4>
             <ul className="space-y-2">
-                <li key="privacy-policy">
-                  <a
-                    href="/privacy-policy"
-                    className="text-white/60 hover:text-white text-sm transition-colors"
-                    title="Privacy Policy"
-                  >
-                    Privacy Policy
-                  </a>
-                </li>
               {legalLinks.map((link) => (
                 <li key={link.name}>
                   <a

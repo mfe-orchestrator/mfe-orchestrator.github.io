@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Code } from 'lucide-react';
+import { Code, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { WaitingListSection } from "@/components/waitingList/WaitingListSection";
 import { Metadata } from "next";
@@ -55,15 +55,92 @@ export default function StartNowPage() {
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
           Deploy your first microfrontend in minutes with our easy-to-use Docker setup
         </p>
-        <div className="mt-4 p-4 bg-yellow-100 dark:bg-yellow-900/50 border border-yellow-300 dark:border-yellow-700 rounded-lg max-w-3xl mx-auto">
+        {/* <div className="mt-4 p-4 bg-yellow-100 dark:bg-yellow-900/50 border border-yellow-300 dark:border-yellow-700 rounded-lg max-w-3xl mx-auto">
           <p className="text-yellow-800 dark:text-yellow-200 text-sm">
             ⚠️ <span className="font-semibold">Heads up!</span> This project is in early stage and may contain bugs. 
             We're actively working on improvements and appreciate your understanding and feedback.
           </p>
-        </div>
+        </div> */}
       </div>
 
       <div className="grid md:grid-cols-2 gap-8">
+        <Card className="border-primary/20 shadow-lg">
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                <Zap className="h-6 w-6" />
+              </div>
+              <CardTitle>Start Online Now</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              <p className="text-muted-foreground">
+                Don't want to install anything? Start using MFE Orchestrator immediately with our online platform!
+              </p>
+
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <div className="flex-shrink-0 mt-1">
+                    <svg className="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-medium">No Installation Required</h4>
+                    <p className="text-sm text-muted-foreground">Access the full platform directly from your browser</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="flex-shrink-0 mt-1">
+                    <svg className="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-medium">Connect Your GitHub Account and Go</h4>
+                    <p className="text-sm text-muted-foreground">Simple GitHub authentication to get started instantly</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="flex-shrink-0 mt-1">
+                    <svg className="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-medium">Free to Start</h4>
+                    <p className="text-sm text-muted-foreground">Begin orchestrating your microfrontends for free</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="flex-shrink-0 mt-1">
+                    <svg className="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-medium">Ready in Seconds</h4>
+                    <p className="text-sm text-muted-foreground">Click and start managing your microfrontends immediately</p>
+                  </div>
+                </li>
+              </ul>
+
+              <div className="pt-10 flex justify-center">
+                <a
+                  href="https://console.mfe-orchestrator.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 backdrop-blur-sm border-2 border-primary/50 rounded-full px-8 py-4 text-lg font-bold text-white shadow-lg shadow-primary/50 hover:shadow-xl hover:shadow-primary/60 transition-all duration-300 hover:scale-105 animate-pulse"
+                >
+                  <Zap className="w-6 h-6 text-white" />
+                  Start Now For Free
+                </a>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         <Card className="border-primary/20 shadow-lg">
           <CardHeader>
             <div className="flex items-center gap-3">
@@ -78,16 +155,16 @@ export default function StartNowPage() {
               <p className="text-muted-foreground">
                 Get up and running quickly with our pre-configured Docker setup. Just run the command below:
               </p>
-              
+
               <div className="bg-muted/50 p-4 rounded-lg font-mono text-sm overflow-x-auto">
                 <code>
                   # Create a new directory for your project<br />
                   mkdir mfe-orchestrator<br />
                   cd mfe-orchestrator<br /><br />
-                  
+
                   # Create a docker-compose.yml file<br />
                   curl -o docker-compose.yml https://raw.githubusercontent.com/mfe-orchestrator/mfe-orchestrator/refs/heads/main/docker-compose.yaml<br /><br />
-                  
+
                   # Start the services<br />
                   docker-compose up -d
                 </code>
@@ -106,9 +183,9 @@ export default function StartNowPage() {
                   </Link>
                 </Button>
                 <Button variant="outline" asChild>
-                  <a 
-                    href="https://github.com/mfe-orchestrator" 
-                    target="_blank" 
+                  <a
+                    href="https://github.com/mfe-orchestrator"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="w-full sm:w-auto"
                   >
@@ -120,7 +197,7 @@ export default function StartNowPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-primary/5 to-background border-primary/20">
+        {/* <Card className="bg-gradient-to-br from-primary/5 to-background border-primary/20">
           <CardHeader>
             <div className="flex items-center gap-3">
               <div className="p-2 rounded-lg bg-primary/10 text-primary">
@@ -184,7 +261,7 @@ export default function StartNowPage() {
               </div>
             </div>
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
 
       <div className="max-w-4xl mx-auto mt-12">

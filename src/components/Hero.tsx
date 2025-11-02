@@ -1,17 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Github, Zap } from "lucide-react";
 import Image from "next/image";
-import heroImage from "@/assets/hero-microfrontends.jpg"
+import heroImage from "@/assets/promo-video.gif"
 import Link from "next/link";
 
 const Hero = () => {
   return (
     <section className="py-10 relative min-h-screen flex flex-col items-center justify-center bg-gradient-hero overflow-hidden">
-      <div className="justify-center flex">
-        <div className="inline-flex items-center gap-2 bg-surface/50 backdrop-blur-sm border border-border/50 rounded-full px-4 py-2 text-sm text-muted-foreground">
-          <Zap className="w-4 h-4 text-primary" />
-          Coming Soon
-        </div>
+      <div className="justify-center flex mb-6">
+        <a href="https://console.mfe-orchestrator.dev" target="_blank" className="mb-10 inline-flex items-center gap-3 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 backdrop-blur-sm border-2 border-primary/50 rounded-full px-8 py-4 text-lg font-bold text-white shadow-lg shadow-primary/50 hover:shadow-xl hover:shadow-primary/60 transition-all duration-300 hover:scale-105 animate-pulse">
+          <Zap className="w-6 h-6 text-white" />
+          Start Now For Free
+        </a>
       </div>
       <div className="container mx-auto px-4 pt-5 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -21,16 +21,16 @@ const Hero = () => {
               
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
-                Streamline your
-                <span className="bg-gradient-primary bg-clip-text text-transparent"> Microfrontends</span>
+                Like
+                <span className="bg-gradient-primary bg-clip-text text-transparent"> Kubernetes</span>...
                 <br />
-                Architecture
+                but for frontend
               </h1>
               
               <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl">
                 A centralized multi-cloud platform with intuitive UI for managing and orchestrating microfrontends across multiple environments. 
               </p>
-              <p className="text-primary pt-2 text-xl md:text-2xl text-muted-foreground max-w-2xl font-bold">Like Kubernetes... but for frontend</p>
+              <p className="text-primary pt-2 text-xl md:text-2xl text-muted-foreground max-w-2xl font-bold">Ship and manage microfrontends in minutes, not in hours!</p>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -76,7 +76,7 @@ const Hero = () => {
             
             <div className="absolute -bottom-6 -right-6 bg-surface border border-border/50 rounded-lg p-4 shadow-card backdrop-blur-sm">
               <div className="text-xs text-muted-foreground">Version</div>
-              <div className="text-sm font-semibold text-primary">v2.1.0</div>
+              <div className="text-sm font-semibold text-primary">v0.8.5</div>
             </div>
           </div>
         </div>
