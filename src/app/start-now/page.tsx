@@ -55,12 +55,6 @@ export default function StartNowPage() {
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
           Deploy your first microfrontend in minutes with our easy-to-use Docker setup
         </p>
-        {/* <div className="mt-4 p-4 bg-yellow-100 dark:bg-yellow-900/50 border border-yellow-300 dark:border-yellow-700 rounded-lg max-w-3xl mx-auto">
-          <p className="text-yellow-800 dark:text-yellow-200 text-sm">
-            ⚠️ <span className="font-semibold">Heads up!</span> This project is in early stage and may contain bugs. 
-            We're actively working on improvements and appreciate your understanding and feedback.
-          </p>
-        </div> */}
       </div>
 
       <div className="grid md:grid-cols-2 gap-8">

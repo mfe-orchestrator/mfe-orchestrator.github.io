@@ -103,7 +103,7 @@ const WaitingListFormContent  : React.FC<WaitingListFormContentProps> = ({ acces
             </>
           ) : (
             <span className="flex items-center gap-2 cursor-pointer">
-              Get Early Access
+              Complete!
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
           )}

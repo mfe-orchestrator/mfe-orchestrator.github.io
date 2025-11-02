@@ -32,10 +32,6 @@ interface FAQItem {
       question: 'How does MFE Orchestrator handle shared dependencies?',
       answer: 'MFE Orchestrator includes a module federation system that allows sharing of common dependencies between micro-frontends, reducing bundle sizes and ensuring consistency across the application.'
     },
-    // {
-    //   question: "How does the waitlist work?",
-    //   answer: "Sign up and you'll get weekly insights on MFE architecture while we build. When we launch, waitlist members get priority access and special early-bird pricing."
-    // }
   ];
   
   export default function FAQList() {
