@@ -69,10 +69,10 @@ const Hero = () => {
             </div>
             
             {/* Floating cards */}
-            <div className="absolute -top-6 -left-6 bg-surface border border-border/50 rounded-lg p-4 shadow-card backdrop-blur-sm">
+            {/* <div className="absolute -top-6 -left-6 bg-surface border border-border/50 rounded-lg p-4 shadow-card backdrop-blur-sm">
               <div className="text-xs text-muted-foreground">Environment</div>
               <div className="text-sm font-semibold text-primary">PROD</div>
-            </div>
+            </div> */}
             
             <div className="absolute -bottom-6 -right-6 bg-surface border border-border/50 rounded-lg p-4 shadow-card backdrop-blur-sm">
               <div className="text-xs text-muted-foreground">Version</div>
