@@ -10,7 +10,7 @@ export default function Footer() {
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Documentation', href: 'https://mfe-orchestrator.dev/documentation' },
-    { name: 'Pricing', href: '/pricing' },
+    // { name: 'Pricing', href: '/pricing' },
     { name: 'FAQ', href: '/faq' },
     { name: 'Start Now', href: '/start-now' },
   ];
