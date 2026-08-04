@@ -2,13 +2,13 @@ import { Metadata } from "next";
 import { Card, CardContent } from '@/components/ui/card';
 
 export const metadata: Metadata = {
-  title: "MFE Orchestrator - Cookie Policy",
+  title: "Cookie Policy",
   alternates: {
     canonical: 'https://mfe-orchestrator.dev/cookie-policy',
   },
   description: "Cookie Policy for MFE Orchestrator - Learn about how we use cookies",
   openGraph: {
-    title: "MFE Orchestrator - Cookie Policy",
+    title: "Cookie Policy",
     description: "Cookie Policy for MFE Orchestrator - Learn about how we use cookies",
     url: "https://mfe-orchestrator.dev/cookie-policy",
     siteName: "MFE Orchestrator",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MFE Orchestrator - Cookie Policy",
+    title: "Cookie Policy",
     description: "Cookie Policy for MFE Orchestrator - Learn about how we use cookies",
   },
 };

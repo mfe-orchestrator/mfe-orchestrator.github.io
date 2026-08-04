@@ -4,54 +4,34 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CheckCircle, Cloud, Code, Cpu, GitBranch, GitCommit, GitFork, GitPullRequest, Globe, Layers, Package, RefreshCw, Server, ShieldCheck, Zap } from 'lucide-react';
 import { WaitingListSection } from "@/components/waitingList/WaitingListSection";
+import JsonLd from "@/components/JsonLd";
+import { pageMetadata } from "@/lib/seo";
+import { breadcrumbSchema } from "@/lib/structuredData";
 
-export const metadata : Metadata = {
-  title: "MFE Orchestrator - About",
-  alternates: {
-    canonical: 'https://mfe-orchestrator.dev/about',
-  },
-  description: "The open-source solution for seamless microfrontend orchestration and versioning",
+export const metadata: Metadata = pageMetadata({
+  title: "Why We Built It: Our Micro Frontend Release Problem",
+  description:
+    "We split our frontend across repositories and discovered that releasing one micro frontend still required rebuilding the shell. This is the problem MFE Orchestrator was built to remove, and what changed once it did.",
+  path: "/about",
   keywords: [
-    "MFE Orchestrator",
-    "microfrontend orchestration",
-    "microfrontend versioning",
-    "microfrontend canary releases",
-    "microfrontend multicloud",
-    "microfrontend"
+    "micro frontend case study",
+    "micro frontend architecture lessons",
+    "why micro frontend orchestration",
+    "open source micro frontend platform",
   ],
-  openGraph: {
-    title: "MFE Orchestrator - About",
-    description: "The open-source solution for seamless microfrontend orchestration and versioning",
-    url: "https://mfe-orchestrator.dev/about",
-    siteName: "MFE Orchestrator",
-    // images: [
-    //   {
-    //     url: "https://mfe-orchestrator.dev/about-og-image.png",
-    //     width: 1200,
-    //     height: 630,
-    //     alt: "MFE Orchestrator About",
-    //   },
-    // ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "MFE Orchestrator - About",
-    description: "The open-source solution for seamless microfrontend orchestration and versioning",
-    //images: ["https://mfe-orchestrator.dev/about-og-image.png"],
-  },
-};
+});
 
 export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 py-8 space-y-12">
+      <JsonLd schema={breadcrumbSchema([{ name: "About", path: "/about" }])} />
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-          About MFE Orchestrator
+          Why we built MFE Orchestrator
         </h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          The open-source solution for seamless microfrontend orchestration and versioning
+          We wanted independent deployment for our micro frontends. We got two builds per release
+          instead — so we built the missing piece.
         </p>
       </div>
 
@@ -67,8 +47,10 @@ export default function AboutPage() {
         <CardContent>
           <div className="prose max-w-none">
             <p className="text-lg">
-              MFE Orchestrator is a free and open-source plug & play solution for orchestrating microfrontend versioning.
-              Think of it like Kubernetes... but specifically designed for Frontend applications.
+              MFE Orchestrator is a free and open-source control plane for micro frontends (MFEs).
+              It stores every build, decides which version each environment serves, and hands your
+              host application the runtime configuration it needs — so shipping one micro frontend
+              never means rebuilding the shell. Think of it as Kubernetes, but for the frontend.
             </p>
           </div>
         </CardContent>
@@ -89,8 +71,8 @@ export default function AboutPage() {
               {[
                 { icon: <Code className="h-5 w-5" />, text: '1. You build your Frontend' },
                 { icon: <GitBranch className="h-5 w-5" />, text: '2. Upload via API, GitHub, GitLab, or Azure DevOps' },
-                { icon: <Package className="h-5 w-5" />, text: '3. Install MFE Orchestrator libraries or itegrates with Vite or Webpack Module Federation' },
-                { icon: <CheckCircle className="h-5 w-5 text-green-500" />, text: '4. Your microfrontend is ready to use!' }
+                { icon: <Package className="h-5 w-5" />, text: '3. Install the MFE Orchestrator libraries, or integrate with Vite or Webpack Module Federation' },
+                { icon: <CheckCircle className="h-5 w-5 text-green-500" />, text: '4. Your micro frontend is live — no host rebuild' }
               ].map((item, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <div className="p-1.5 rounded-md bg-primary/10 text-primary mt-0.5">
@@ -117,7 +99,7 @@ export default function AboutPage() {
           <CardContent>
             <ul className="space-y-3">
               {[
-                'Automatically uploads to the right cloud provider (Azure, AWS, or S3)',
+                'Uploads each build to the storage you configured (AWS S3, Azure Blob Storage, GCP or on-premise)',
                 'Manages versioning across different environments',
                 'Dynamically loads the correct frontend version',
                 'Simplifies rollback procedures',
@@ -170,7 +152,7 @@ export default function AboutPage() {
               Our Journey
             </h2>
             <p className="text-muted-foreground text-lg">
-              How we transformed our microfrontend architecture and what we learned along the way
+              How we rebuilt our micro frontend release process, and what it cost us to learn
             </p>
           </div>
         </CardHeader>
@@ -225,7 +207,7 @@ export default function AboutPage() {
                 <AccordionContent>
                   <ul className="space-y-2 mt-4 pl-2">
                     {[
-                      'Releasing an MFE required two builds: one for the MFE and one for the shell',
+                      'Releasing one MFE required two builds: one for the MFE and one for the shell',
                       'Builds eventually failed due to memory constraints',
                       'Longer deployment times',
                       'Difficult to manage versions across teams',

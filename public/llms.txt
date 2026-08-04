@@ -1,11 +1,22 @@
 # MFE Orchestrator
 
-> The control plane for your microfrontends
+> Ship a micro frontend without rebuilding the host application.
 
-MFE Orchestrator manages the versions, environments, deployments and rollbacks
-of a microfrontend architecture, and generates the Module Federation
-configuration a host application needs. It runs as a hosted console or
-self-hosted.
+MFE Orchestrator is an open-source control plane for micro frontends (MFEs). It
+stores every build, decides which version each environment serves, and hands the
+host application the runtime configuration it needs — including the Module
+Federation wiring. Releasing a micro frontend therefore never requires
+rebuilding or redeploying the shell, and a rollback is a version change rather
+than a rebuild. It runs as a hosted console or self-hosted with Docker Compose.
+
+Category: micro frontend deployment and orchestration platform.
+Also written: micro-frontend, microfrontend. MFE stands for micro frontend.
+
+Key capabilities: version registry per environment (DEV/UAT/PROD and custom),
+runtime configuration for Module Federation hosts under Webpack and Vite, canary
+releases with gradual traffic shifting, one-step rollback, artifact storage on
+AWS S3 / Azure Blob Storage / Google Cloud Storage / on-premise, and CI/CD
+integrations for GitHub Actions, GitLab CI and Azure DevOps.
 
 This file is a pointer. The documentation is served under /documentation and
 carries its own llms.txt, which indexes every page.
@@ -21,3 +32,11 @@ carries its own llms.txt, which indexes every page.
 - [MFE Orchestrator](https://mfe-orchestrator.dev/): product site
 - [Console](https://console.mfe-orchestrator.dev/): the hosted console
 - [GitHub](https://github.com/mfe-orchestrator): source, templates and CI integrations
+
+## Concepts
+
+- [What is a micro frontend (MFE)?](https://mfe-orchestrator.dev/what-is-a-micro-frontend): definition of the term, the architecture, its trade-offs and when it is worth adopting
+- [Module Federation versioning and dynamic remotes](https://mfe-orchestrator.dev/module-federation): why Module Federation alone leaves version selection to you, and how the orchestrator replaces a hand-maintained remotes file
+- [FAQ](https://mfe-orchestrator.dev/faq): what MFE stands for, how orchestration differs from plain Module Federation, versioning, canary releases, rollback and self-hosting
+- [Get started](https://mfe-orchestrator.dev/start-now): the hosted console, or self-hosting with Docker Compose
+- [Why we built it](https://mfe-orchestrator.dev/about): the release problem that led to the project

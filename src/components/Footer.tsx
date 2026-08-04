@@ -8,11 +8,13 @@ export default function Footer() {
 
   const navItems = [
     { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
+    { name: 'What is a micro frontend?', href: '/what-is-a-micro-frontend' },
+    { name: 'Module Federation', href: '/module-federation' },
     { name: 'Documentation', href: 'https://mfe-orchestrator.dev/documentation' },
     // { name: 'Pricing', href: '/pricing' },
     { name: 'FAQ', href: '/faq' },
-    { name: 'Start Now', href: '/start-now' },
+    { name: 'Get started', href: '/start-now' },
+    { name: 'About', href: '/about' },
   ];
 
   const legalLinks = [
@@ -46,7 +48,8 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-bold text-xl mb-4">MFE Orchestrator</h3>
             <p className="text-white/60 text-sm">
-              Microfrontend orchestrator hub for modern web applications.
+              The open-source control plane for micro frontends — versioning, per-environment
+              configuration, canary releases and rollback, without rebuilding the host.
             </p>
           </div>
 

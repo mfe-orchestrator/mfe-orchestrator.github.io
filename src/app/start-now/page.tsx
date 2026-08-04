@@ -5,55 +5,35 @@ import { Code, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { WaitingListSection } from "@/components/waitingList/WaitingListSection";
 import { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { pageMetadata } from "@/lib/seo";
+import { breadcrumbSchema } from "@/lib/structuredData";
 
-export const metadata : Metadata = {
-  title: "MFE Orchestrator - Start Now",
-  alternates: {
-    canonical: 'https://mfe-orchestrator.dev/start-now',
-  },
-  description: "Get started with MFE Orchestrator in minutes with our easy-to-use Docker setup",
+export const metadata: Metadata = pageMetadata({
+  title: "Get Started — Hosted Console or Self-Hosted With Docker",
+  description:
+    "Two ways to start orchestrating micro frontends: the free hosted console with no installation, or self-host MFE Orchestrator in your own infrastructure with Docker Compose.",
+  path: "/start-now",
   keywords: [
-    "MFE Orchestrator Start Now",
-    "microfrontend start now",
-    "frontend orchestration start now",
-    "microfrontend versioning start now",
-    "canary releases start now",
-    "multicloud frontend start now",
-    "Kubernetes for frontend start now",
+    "self-hosted micro frontend orchestrator",
+    "micro frontend orchestrator docker compose",
+    "install MFE Orchestrator",
+    "micro frontend platform on premise",
+    "free micro frontend orchestration",
   ],
-  openGraph: {
-    title: "MFE Orchestrator - Start Now",
-    description: "Get started with MFE Orchestrator in minutes with our easy-to-use Docker setup",
-    url: "https://mfe-orchestrator.dev/start-now",
-    siteName: "MFE Orchestrator",
-    // images: [
-    //   {
-    //     url: "https://mfe-orchestrator.dev/start-now-og-image.png",
-    //     width: 1200,
-    //     height: 630,
-    //     alt: "MFE Orchestrator Start Now",
-    //   },
-    // ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "MFE Orchestrator - Start Now",
-    description: "Get started with MFE Orchestrator in minutes with our easy-to-use Docker setup",
-    //images: ["https://mfe-orchestrator.github.io/start-now-og-image.png"],
-  },
-}
+})
 
 export default function StartNowPage() {
   return (<>
     <div className="container mx-auto px-4 py-12 space-y-8">
+      <JsonLd schema={breadcrumbSchema([{ name: "Get started", path: "/start-now" }])} />
       <div className="text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-          Get Started with MFE Orchestrator
+          Get started with MFE Orchestrator
         </h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Deploy your first microfrontend in minutes with our easy-to-use Docker setup
+          Use the free hosted console, or run it in your own infrastructure with Docker Compose.
+          Both take minutes.
         </p>
       </div>
 

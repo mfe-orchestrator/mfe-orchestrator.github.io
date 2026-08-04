@@ -1,68 +1,62 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import './style.css'
 import FAQList from './FAQList';
 import { WaitingListSection } from "@/components/waitingList/WaitingListSection";
+import JsonLd from "@/components/JsonLd";
+import { pageMetadata } from "@/lib/seo";
+import { breadcrumbSchema, faqPageSchema } from "@/lib/structuredData";
 
-export const metadata: Metadata = {
-  title: "MFE Orchestrator - FAQ",
-  alternates: {
-    canonical: 'https://mfe-orchestrator.dev/about',
-  },
+// The canonical URL here used to point at /about, which told Google this page
+// was a duplicate of a different page and made it a candidate for being dropped
+// from the index entirely. pageMetadata derives it from the path instead.
+export const metadata: Metadata = pageMetadata({
+  title: "Micro Frontend Orchestration FAQ",
   description:
-    "Find answers to the most frequently asked questions about MFE Orchestrator. Learn how to set up, manage versions, enable canary releases, and integrate your microfrontends.",
+    "What MFE stands for, how a micro frontend orchestrator differs from plain Module Federation, how versioning, canary releases and rollback work, and whether you can self-host.",
+  path: "/faq",
   keywords: [
-    "MFE Orchestrator FAQ",
-    "microfrontend questions",
-    "frontend orchestration help",
-    "microfrontend versioning support",
-    "canary releases",
-    "multicloud frontend",
-    "Kubernetes for frontend",
+    "micro frontend FAQ",
+    "what does mfe stand for",
+    "micro frontend orchestrator questions",
+    "module federation versioning",
+    "micro frontend rollback",
+    "self-hosted micro frontend platform",
   ],
-  openGraph: {
-    title: "MFE Orchestrator - FAQ",
-    description:
-      "Discover how MFE Orchestrator works: setup, versioning, canary releases, multicloud support, and more.",
-    url: "https://mfe-orchestrator.dev/faq",
-    siteName: "MFE Orchestrator",
-    // images: [
-    //   {
-    //     url: "https://mfe-orchestrator.dev/faq-og-image.png",
-    //     width: 1200,
-    //     height: 630,
-    //     alt: "MFE Orchestrator FAQ",
-    //   },
-    // ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "MFE Orchestrator - FAQ",
-    description:
-      "Get clear answers to the most common questions about MFE Orchestrator: setup, versioning, and orchestration.",
-    //images: ["https://mfe-orchestrator.github.io/faq-og-image.png"],
-  },
-};
-
+});
 
 export default function FAQPage() {
-
   return (
     <>
-    <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-12">
-      <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-          Frequently Asked Questions
-        </h1>
-        <p className="mt-5 max-w-xl mx-auto text-xl text-gray-500 dark:text-gray-300">
-          Find answers to common questions about MFE Orchestrator and micro-frontend architecture.
-        </p>
-      </div>
+      <JsonLd schema={[faqPageSchema(), breadcrumbSchema([{ name: "FAQ", path: "/faq" }])]} />
 
-      <FAQList />
-    </div>
-    <WaitingListSection />
+      <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+            Frequently Asked Questions
+          </h1>
+          <p className="mt-5 max-w-xl mx-auto text-xl text-gray-500 dark:text-gray-300">
+            Micro frontends, orchestration and MFE Orchestrator — answered plainly.
+          </p>
+        </div>
+
+        <FAQList />
+
+        <div className="mt-16 text-center space-y-3 text-muted-foreground">
+          <p>
+            Still deciding whether you need an orchestrator? Start with{" "}
+            <Link href="/what-is-a-micro-frontend" className="text-primary hover:underline">
+              what a micro frontend is
+            </Link>
+            , or read how it compares to{" "}
+            <Link href="/module-federation" className="text-primary hover:underline">
+              plain Module Federation
+            </Link>
+            .
+          </p>
+        </div>
+      </div>
+      <WaitingListSection />
     </>
   );
 }

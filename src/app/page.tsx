@@ -1,58 +1,44 @@
 import Features from "../components/Features";
 import Hero from "../components/Hero";
-import CodeExample from "../components/CodeExample";
+import HowItWorks from "../components/HowItWorks";
+import WhyItExists from "../components/WhyItExists";
 import CTA from "../components/CTA";
 import { Metadata } from "next";
 import { WaitingListSection } from "@/components/waitingList/WaitingListSection";
+import JsonLd from "@/components/JsonLd";
+import { pageMetadata } from "@/lib/seo";
+import { howToSchema, softwareApplicationSchema } from "@/lib/structuredData";
 
-export const metadata: Metadata = {
-  title: "MFE Orchestrator - Microfrontend Versioning & Orchestration | Start now for free",
+export const metadata: Metadata = pageMetadata({
+  // Leads with the searched category rather than the brand, and states the
+  // outcome inside the 60 characters Google will actually show.
+  title:
+    "Micro Frontend Orchestration & Deployment | MFE Orchestrator",
   description:
-    "MFE Orchestrator is a free and open-source software that simplifies versioning and orchestration of microfrontends. Plug & play, multicloud, and easy to integrate.",
+    "Deploy, version and roll back micro frontends without rebuilding the host application. Open-source control plane for Module Federation, with canary releases, multi-cloud storage and CI/CD integrations. Free to start.",
+  path: "/",
   keywords: [
-    "MFE Orchestrator",
-    "microfrontend",
-    "frontend orchestration",
-    "frontend versioning",
-    "open source",
-    "multicloud",
-    "Kubernetes for frontend",
+    "micro frontend orchestrator",
+    "micro frontend deployment tool",
+    "micro frontend version management",
+    "module federation orchestration",
+    "deploy micro frontend without rebuilding host",
+    "open source micro frontend platform",
   ],
-  openGraph: {
-    title: "MFE Orchestrator - Microfrontend Versioning & Orchestration",
-    description:
-      "An open-source solution to orchestrate and version your microfrontends. Multicloud-ready, simple, and fast.",
-    url: "https://mfe-orchestrator.dev",
-    siteName: "MFE Orchestrator",
-    // images: [
-    //   {
-    //     url: "https://mfe-orchestrator.dev/og-image.png",
-    //     width: 1200,
-    //     height: 630,
-    //     alt: "MFE Orchestrator",
-    //   },
-    // ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "MFE Orchestrator - Microfrontend Versioning & Orchestration",
-    description:
-      "Easily manage versions, buckets, and canary releases of your microfrontends with MFE Orchestrator.",
-    // images: ["https://mfe-orchestrator.github.io/og-image.png"],
-  },
-};
- 
+});
 
 export default function Home() {
   return (
     <div className="min-h-screen">
+      <JsonLd schema={[softwareApplicationSchema(), howToSchema()]} />
       <Hero />
-      <WaitingListSection />
+      {/* Value proposition before the newsletter: the signup form used to sit
+          directly under the hero, ahead of any explanation of the product. */}
+      <WhyItExists />
       <Features />
-      <CodeExample />
+      <HowItWorks />
       <CTA />
+      <WaitingListSection />
     </div>
   );
 }

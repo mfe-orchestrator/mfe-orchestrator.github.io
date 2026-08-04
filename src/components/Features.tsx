@@ -14,52 +14,57 @@ import {
 
 const featuresCore = [
   {
-    icon: FileText,
-    title: "Intuitive Web Interface",
-    description: "Manage your microfrontends through a beautiful, user-friendly interface with drag-and-drop configuration and real-time preview."
-  },
-  {
     icon: Layers,
-    title: "Multi-environment Support",
-    description: "Deploy different versions across DEV, UAT, PROD, and custom environments with environment-specific configurations."
-  },
-  {
-    icon: Globe,
-    title: "Multi-cloud & Local Hosting",
-    description: "Host locally (on‑prem) or deploy across AWS, Azure, and GCP with unified management and seamless failover."
-  },
-  {
-    icon: Layers,
-    title: "Version Management",
-    description: "Track and manage different versions of your microfrontends with built-in versioning and rollback capabilities."
+    title: "Micro Frontend Version Management",
+    description: "Every build you publish stays available and addressable. Track which version of each micro frontend is live, and change it without a rebuild."
   },
   {
     icon: Rocket,
     title: "Independent Deployment",
-    description: "Deploy microfrontends independently without requiring a complete frontend rebuild, enabling faster development cycles."
+    description: "Release one micro frontend without rebuilding or redeploying the host application, so a small change costs a small deploy."
   },
   {
     icon: Settings,
-    title: "Environment-specific Configs",
-    description: "Maintain separate configurations for each environment, allowing different versions in different stages of development."
+    title: "Per-environment Configuration",
+    description: "DEV, UAT, PROD and any environment you invent can serve different versions at the same time, each with its own configuration."
+  },
+  {
+    icon: GitCompare,
+    title: "Module Federation, Configured For You",
+    description: "MFE Orchestrator generates the runtime configuration your host needs under Vite or Webpack — no hand-maintained remotes file in the host repository."
+  },
+  {
+    icon: Globe,
+    title: "Multi-cloud & On-premise Storage",
+    description: "Artifacts go to your own AWS S3, Azure Blob Storage or Google Cloud Storage — or stay entirely on-premise when they cannot leave your network."
+  },
+  {
+    icon: FileText,
+    title: "One Console For The Whole Estate",
+    description: "See every micro frontend, environment and version in one interface, instead of reading pipeline logs to find out what is deployed."
   }
 ];
 
 const featuresOps = [
   {
     icon: GitBranch,
-    title: "Canary Deployments",
-    description: "Safely roll out changes with canary deployments, gradually directing traffic to new versions while monitoring performance and user feedback."
+    title: "Canary Releases",
+    description: "Serve a new version to a share of your users, raise it when the numbers hold, and stop the rollout by changing one setting."
   },
   {
     icon: GitMerge,
-    title: "CI/CD Pipelines",
-    description: "Built-in pipelines for GitHub Actions, GitLab CI, and Azure DevOps to push built artifacts to the MFE Orchestrator Hub."
+    title: "CI/CD Integrations",
+    description: "Ready-made pipelines for GitHub Actions, GitLab CI and Azure DevOps, plus an API for everything else. The pipeline you already have gains one upload step."
+  },
+  {
+    icon: ShieldCheck,
+    title: "Rollback In One Step",
+    description: "Recovering means selecting the previous version, not reverting a commit and waiting for a build. Time to recover stops depending on your pipeline."
   },
   {
     icon: GitPullRequest,
     title: "Git Integration (In progress)",
-    description: "Import Git repositories and manage individual MFEs directly from your VCS; create pipelines on your Git projects."
+    description: "Import Git repositories and manage individual micro frontends directly from your VCS; create pipelines on your Git projects."
   },
   // {
   //   icon: GitCompare,
@@ -79,11 +84,12 @@ const Features = () => {
         <section className="py-20 container mx-auto px-4 py-20">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-foreground">
-              Orchestrate. Scale.
-              <span className="bg-gradient-primary bg-clip-text text-transparent"> Anywhere.</span>
+              Everything a micro frontend needs
+              <span className="bg-gradient-primary bg-clip-text text-transparent"> after the build</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Manage and host your MFEs across any environment and cloud, with zero friction.
+              Storage, versions, per-environment configuration and the runtime wiring your host
+              application depends on — across any cloud, or none.
             </p>
           </div>
 
@@ -113,11 +119,12 @@ const Features = () => {
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-foreground">
-              Release faster.
-              <span className="bg-gradient-primary bg-clip-text text-transparent"> Secure by Design.</span>
+              Release often.
+              <span className="bg-gradient-primary bg-clip-text text-transparent"> Recover instantly.</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Canary, CI/CD and deep Git integration for fast and reliable releases.
+              Canary releases, pipeline integrations and one-step rollback, so shipping more often
+              does not mean risking more.
             </p>
           </div>
 

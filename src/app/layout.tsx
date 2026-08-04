@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "sonner";
 
@@ -7,6 +7,9 @@ import GoogleAnalyticsCustom from "@/components/GoogleAnalyticsCustom";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
+import { CORE_KEYWORDS, PRODUCT, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { organizationSchema, webSiteSchema } from "@/lib/structuredData";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,9 +21,37 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#8b5cf6",
+};
+
 export const metadata: Metadata = {
-  title: "MFE Orchestrator Hub",
-  description: "Microfrontend orchestrator hub",
+  // Without this, every relative canonical and og:url resolves against
+  // localhost at build time.
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} — ${PRODUCT.oneLiner}`,
+    // Page titles read "<page> | MFE Orchestrator" without each page having
+    // to repeat the brand.
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: PRODUCT.definition,
+  applicationName: SITE_NAME,
+  keywords: CORE_KEYWORDS,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   icons: {
     icon: [
       { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
@@ -40,7 +71,6 @@ export const metadata: Metadata = {
     ],
   },
   manifest: '/favicon/manifest.json',
-  themeColor: '#ffffff',
   other: {
     'msapplication-TileColor': '#ffffff',
     'msapplication-TileImage': '/favicon/ms-icon-144x144.png',
@@ -58,6 +88,7 @@ export default function RootLayout({
         {process.env.NEXT_PUBLIC_GOOGLE_SEARCH_CONSOLE_SITE_VERIFICATION && <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GOOGLE_SEARCH_CONSOLE_SITE_VERIFICATION} />}
         {/* <script type="text/javascript" src="https://embeds.iubenda.com/widgets/13392720-579d-4871-93ad-590c86da4175.js"></script> */}
         <link rel="privacy-policy" href="/privacy-policy" />
+        <JsonLd schema={[organizationSchema(), webSiteSchema()]} />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900 text-white flex flex-col min-h-screen`}>
         <GoogleAnalyticsCustom />
