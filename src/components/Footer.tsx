@@ -8,6 +8,7 @@ export default function Footer() {
 
   const navItems = [
     { name: 'Home', href: '/' },
+    { name: 'How it works', href: '/how-it-works' },
     { name: 'What is a micro frontend?', href: '/what-is-a-micro-frontend' },
     { name: 'Module Federation', href: '/module-federation' },
     { name: 'Documentation', href: 'https://mfe-orchestrator.dev/documentation' },

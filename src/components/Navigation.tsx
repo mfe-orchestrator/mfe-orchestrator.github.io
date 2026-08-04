@@ -8,6 +8,7 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   
   const navItems = [
+    { name: 'How it works', href: '/how-it-works' },
     { name: 'What is an MFE?', href: '/what-is-a-micro-frontend' },
     { name: 'Module Federation', href: '/module-federation' },
     { name: 'Documentation', href: 'https://mfe-orchestrator.dev/documentation' },

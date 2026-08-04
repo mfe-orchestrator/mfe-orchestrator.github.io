@@ -4,7 +4,7 @@
  * while the orphaned pricing page is excluded and the legal pages are
  * de-prioritised.
  */
-const HIGH_PRIORITY = ['/', '/what-is-a-micro-frontend', '/module-federation'];
+const HIGH_PRIORITY = ['/', '/how-it-works', '/what-is-a-micro-frontend', '/module-federation'];
 const LOW_PRIORITY = ['/privacy-policy', '/cookie-policy'];
 
 module.exports = {
