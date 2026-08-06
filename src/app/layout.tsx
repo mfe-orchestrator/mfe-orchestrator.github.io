@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   // localhost at build time.
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — ${PRODUCT.oneLiner}`,
+    default: `${SITE_NAME} — ${PRODUCT.oneLiner} Free & Open Source`,
     // Page titles read "<page> | MFE Orchestrator" without each page having
     // to repeat the brand.
     template: `%s | ${SITE_NAME}`,

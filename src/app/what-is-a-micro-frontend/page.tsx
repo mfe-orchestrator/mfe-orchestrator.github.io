@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/design-system";
-import { Button } from "@/components/design-system";
+import { Button, Card, CardContent, CardHeader, CardTitle } from "@/components/design-system";
 import { ArrowRight, Check, Layers, Puzzle, Users, X } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import { CONSOLE_URL, pageMetadata } from "@/lib/seo";
@@ -16,7 +15,7 @@ import { breadcrumbSchema, definedTermSchema } from "@/lib/structuredData";
  */
 
 export const metadata: Metadata = pageMetadata({
-  title: "What Is a Micro Frontend (MFE)? Definition & Architecture",
+  title: "What Is a Micro Frontend (MFE)? Architecture, Benefits & When to Use It",
   description:
     "MFE stands for micro frontend: an independently built and deployed piece of a web application, combined with others at runtime. A plain definition, when to use the architecture, and what it costs you.",
   path: "/what-is-a-micro-frontend",

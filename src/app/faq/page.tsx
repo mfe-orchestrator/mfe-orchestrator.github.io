@@ -11,7 +11,7 @@ import { breadcrumbSchema, faqPageSchema } from "@/lib/structuredData";
 // was a duplicate of a different page and made it a candidate for being dropped
 // from the index entirely. pageMetadata derives it from the path instead.
 export const metadata: Metadata = pageMetadata({
-  title: "Micro Frontend Orchestration FAQ",
+  title: "Micro Frontend Orchestration FAQ — Quick Answers Before You Start",
   description:
     "What MFE stands for, how a micro frontend orchestrator differs from plain Module Federation, how versioning, canary releases and rollback work, and whether you can self-host.",
   path: "/faq",

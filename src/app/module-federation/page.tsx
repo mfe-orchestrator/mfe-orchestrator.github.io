@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/design-system";
-import { Button } from "@/components/design-system";
+import { Button, Card, CardContent, CardHeader, CardTitle } from "@/components/design-system";
 import { ArrowRight, GitCompare, Server, Workflow } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import { CONSOLE_URL, DOCS_URL, pageMetadata } from "@/lib/seo";
@@ -15,7 +14,7 @@ import { breadcrumbSchema } from "@/lib/structuredData";
  */
 
 export const metadata: Metadata = pageMetadata({
-  title: "Module Federation Versioning & Dynamic Remotes, Managed",
+  title: "Module Federation Without the Pain — Versioned Remotes, Zero Host Rebuilds",
   description:
     "Module Federation loads remotes at runtime but does not decide which version to load. MFE Orchestrator replaces the hand-maintained remotes configuration with a versioned registry and serves it per environment — for Webpack and Vite.",
   path: "/module-federation",

@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/design-system";
-import { Button } from "@/components/design-system";
+import { Button, Card, CardContent, CardHeader, CardTitle } from "@/components/design-system";
 import { Code, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { WaitingListSection } from "@/components/waitingList/WaitingListSection";
@@ -10,7 +9,7 @@ import { pageMetadata } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/structuredData";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Get Started — Hosted Console or Self-Hosted With Docker",
+  title: "Start Free in Minutes — Hosted Console or Self-Hosted With Docker",
   description:
     "Two ways to start orchestrating micro frontends: the free hosted console with no installation, or self-host MFE Orchestrator in your own infrastructure with Docker Compose.",
   path: "/start-now",
@@ -152,7 +151,7 @@ export default function StartNowPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Button asChild>
-                  <Link href="https://mfe-orchestrator.dev/documentation/docs/installation/docker-compose" className="w-full sm:w-auto">
+                  <Link href="https://mfe-orchestrator.dev/documentation/docs/self-hosting/docker-compose" className="w-full sm:w-auto">
                     View Full Documentation
                   </Link>
                 </Button>

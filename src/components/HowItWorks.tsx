@@ -1,6 +1,5 @@
 "use client"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/design-system";
-import { Button } from "@/components/design-system";
+import { Button, Card, CardContent, CardHeader, CardTitle } from "@/components/design-system";
 import { Copy, CheckCircle } from "lucide-react";
 import { useState } from "react";
 

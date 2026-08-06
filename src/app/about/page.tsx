@@ -1,7 +1,6 @@
 import React from 'react';
 import { Metadata } from "next";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/design-system";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/design-system";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Card, CardContent, CardHeader, CardTitle } from "@/components/design-system";
 import { CheckCircle, Cloud, Code, Cpu, GitBranch, GitCommit, GitFork, GitPullRequest, Globe, Layers, Package, RefreshCw, Server, ShieldCheck, Zap } from 'lucide-react';
 import { WaitingListSection } from "@/components/waitingList/WaitingListSection";
 import JsonLd from "@/components/JsonLd";
@@ -9,7 +8,7 @@ import { pageMetadata } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/structuredData";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Why We Built It: Our Micro Frontend Release Problem",
+  title: "Why We Built It — From Micro Frontend Release Pain to One-Click Rollbacks",
   description:
     "We split our frontend across repositories and discovered that releasing one micro frontend still required rebuilding the shell. This is the problem MFE Orchestrator was built to remove, and what changed once it did.",
   path: "/about",
