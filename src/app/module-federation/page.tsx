@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/design-system";
+import { Button } from "@/components/design-system";
 import { ArrowRight, GitCompare, Server, Workflow } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import { CONSOLE_URL, DOCS_URL, pageMetadata } from "@/lib/seo";
@@ -212,13 +212,13 @@ export default function ModuleFederationPage() {
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <a href={CONSOLE_URL} target="_blank" rel="noopener noreferrer">
-                <Button variant="hero" size="lg" className="bg-primary group cursor-pointer w-full sm:w-auto">
+                <Button size="lg" className="group cursor-pointer w-full sm:w-auto">
                   Start free — no install
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </a>
               <Link href="/what-is-a-micro-frontend">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto cursor-pointer">
+                <Button variant="secondary" size="lg" className="w-full sm:w-auto cursor-pointer">
                   New to micro frontends?
                 </Button>
               </Link>

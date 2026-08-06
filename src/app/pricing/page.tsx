@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/design-system";
 import { Check, Zap, Shield, Users, Server, GitBranch, Clock, CheckCircle } from "lucide-react";
 import { PricingCardButton } from "@/components/PricingCardButton";
 import { WaitingListSection } from "@/components/waitingList/WaitingListSection";
@@ -155,7 +155,7 @@ export default function PricingPage() {
             <p className="text-muted-foreground mb-6">
               Need something custom? We've got you covered.
             </p>
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
+            <Button variant="secondary">
               Contact Sales
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-2">
                 <path d="M5 12h14"></path>

@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/design-system";
 import { ArrowRight, BookOpen, Github } from "lucide-react";
 import Image from "next/image";
 import heroImage from "@/assets/promo-video.gif"
 import Link from "next/link";
-import { CONSOLE_URL, DOCS_URL, GITHUB_URL } from "@/lib/seo";
+import { CONSOLE_URL, GITHUB_URL, QUICK_START_URL } from "@/lib/seo";
 
 const Hero = () => {
   return (
@@ -42,27 +42,31 @@ const Hero = () => {
                 so everything else is visibly secondary. */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a href={CONSOLE_URL} target="_blank" rel="noopener noreferrer">
-                <Button variant="hero" size="xl" className="bg-primary group cursor-pointer w-full sm:w-auto">
+                <Button size="lg" className="group cursor-pointer w-full sm:w-auto">
                   Start free — no install
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </a>
-              <Link href={DOCS_URL}>
-                <Button variant="outline" size="xl" className="group cursor-pointer w-full sm:w-auto">
+              <Link href={QUICK_START_URL}>
+                <Button variant="secondary" size="lg" className="group cursor-pointer w-full sm:w-auto">
                   <BookOpen className="w-5 h-5" />
-                  Read the docs
+                  Quick start — 10 minutes
                 </Button>
               </Link>
             </div>
 
+            {/* Social proof, stated in verifiable facts rather than adjectives:
+                the license, the pull count and the self-host escape hatch. */}
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 justify-center lg:justify-start text-sm text-muted-foreground">
               <Link
                 href={GITHUB_URL}
                 className="inline-flex items-center gap-2 hover:text-foreground transition-colors"
               >
                 <Github className="w-4 h-4" />
-                Open source on GitHub
+                Apache-2.0 open source
               </Link>
+              <span className="hidden sm:inline text-border">|</span>
+              <span>4,000+ Docker pulls</span>
               <span className="hidden sm:inline text-border">|</span>
               <Link href="/start-now" className="hover:text-foreground transition-colors">
                 Or self-host it with Docker Compose

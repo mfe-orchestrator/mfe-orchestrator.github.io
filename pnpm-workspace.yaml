@@ -1,0 +1,2 @@
+minimumReleaseAgeExclude:
+  - '@mfe-orchestrator/design-system'

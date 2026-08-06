@@ -1,7 +1,7 @@
 import React from 'react';
 import { Metadata } from "next";
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/design-system";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/design-system";
 import { CheckCircle, Cloud, Code, Cpu, GitBranch, GitCommit, GitFork, GitPullRequest, Globe, Layers, Package, RefreshCw, Server, ShieldCheck, Zap } from 'lucide-react';
 import { WaitingListSection } from "@/components/waitingList/WaitingListSection";
 import JsonLd from "@/components/JsonLd";

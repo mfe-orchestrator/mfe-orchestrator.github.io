@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent } from "@/components/design-system";
 
 export const metadata: Metadata = {
   title: "Cookie Policy",

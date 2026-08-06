@@ -1,6 +1,6 @@
 "use client"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/design-system";
+import { Button } from "@/components/design-system";
 import { Copy, CheckCircle } from "lucide-react";
 import { useState } from "react";
 
@@ -108,7 +108,7 @@ const HowItWorks = () => {
                 </p>
               </div>
               <Button
-                variant="outline"
+                variant="secondary"
                 size="sm"
                 onClick={handleCopy}
                 className="gap-2 flex-shrink-0"

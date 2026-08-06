@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/design-system";
 import { ArrowRight, BookOpen } from "lucide-react";
 import Link from "next/link";
-import { CONSOLE_URL, DOCS_URL } from "@/lib/seo";
+import { CONSOLE_URL, QUICK_START_URL } from "@/lib/seo";
 
 const CTA = () => {
   return (
@@ -21,15 +21,15 @@ const CTA = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={CONSOLE_URL} target="_blank" rel="noopener noreferrer">
-              <Button variant="hero" size="xl" className="group cursor-pointer bg-primary w-full sm:w-auto">
+              <Button size="lg" className="group cursor-pointer w-full sm:w-auto">
                 Start free — no install
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </a>
-            <Link href={DOCS_URL}>
-              <Button variant="outline" size="xl" className="group cursor-pointer w-full sm:w-auto">
+            <Link href={QUICK_START_URL}>
+              <Button variant="secondary" size="lg" className="group cursor-pointer w-full sm:w-auto">
                 <BookOpen className="w-5 h-5" />
-                Read the docs
+                Quick start — 10 minutes
               </Button>
             </Link>
           </div>

@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/design-system";
+import { Input } from "@/components/design-system";
 import { Loader2, Mail, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 import { usePathname } from 'next/navigation';

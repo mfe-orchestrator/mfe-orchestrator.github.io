@@ -9,6 +9,8 @@ on:
 
 permissions:
   contents: read
+  # Needed to install @mfe-orchestrator/design-system from GitHub Packages.
+  packages: read
   pages: write
   id-token: write
 
@@ -38,6 +40,9 @@ jobs:
           node-version: '23.11.1'
           cache-dependency-path: './pnpm-lock.yaml'
           cache: 'pnpm'
+
+      - name: Authenticate to GitHub Packages
+        run: pnpm config set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install Dependencies
         run: pnpm install

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { Button } from "./ui/button";
+import { Button } from "@/components/design-system";
 import { PricingModal } from "./PricingModal";
 
 interface PricingCardButtonProps {
@@ -15,8 +15,9 @@ export function PricingCardButton({ isPopular, cta, selectedPlan }: PricingCardB
 
   return (
     <>
-      <Button 
-        className={`cursor-pointer w-full ${isPopular ? 'bg-primary hover:bg-primary/90' : 'bg-secondary hover:bg-secondary/80'}`}
+      <Button
+        variant={isPopular ? "primary" : "secondary"}
+        className="cursor-pointer w-full"
         size="lg"
         onClick={() => setIsModalOpen(true)}
       >

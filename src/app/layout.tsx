@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "sonner";
 
 import "./globals.css";
@@ -10,16 +9,6 @@ import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { CORE_KEYWORDS, PRODUCT, SITE_NAME, SITE_URL } from "@/lib/seo";
 import { organizationSchema, webSiteSchema } from "@/lib/structuredData";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const viewport: Viewport = {
   themeColor: "#8b5cf6",
@@ -83,14 +72,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    // The site is brand-dark: the `dark` class selects the design system's
+    // dark token set (see globals.css).
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         {process.env.NEXT_PUBLIC_GOOGLE_SEARCH_CONSOLE_SITE_VERIFICATION && <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GOOGLE_SEARCH_CONSOLE_SITE_VERIFICATION} />}
         {/* <script type="text/javascript" src="https://embeds.iubenda.com/widgets/13392720-579d-4871-93ad-590c86da4175.js"></script> */}
         <link rel="privacy-policy" href="/privacy-policy" />
         <JsonLd schema={[organizationSchema(), webSiteSchema()]} />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900 text-white flex flex-col min-h-screen`}>
+      <body className="antialiased flex flex-col min-h-screen">
         <GoogleAnalyticsCustom />
         <ParticlesBackground />
         <Navigation />

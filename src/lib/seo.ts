@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 export const SITE_URL = "https://mfe-orchestrator.dev";
 export const CONSOLE_URL = "https://console.mfe-orchestrator.dev";
 export const DOCS_URL = "https://mfe-orchestrator.dev/documentation";
+/** The docs' golden path: zero to a deployed microfrontend and a rollback in ~10 minutes. */
+export const QUICK_START_URL = `${DOCS_URL}/docs/quick-start`;
 export const GITHUB_URL = "https://github.com/mfe-orchestrator";
 
 export const SITE_NAME = "MFE Orchestrator";

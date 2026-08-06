@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/design-system";
+import { Button } from "@/components/design-system";
 import { Code, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { WaitingListSection } from "@/components/waitingList/WaitingListSection";
@@ -156,7 +156,7 @@ export default function StartNowPage() {
                     View Full Documentation
                   </Link>
                 </Button>
-                <Button variant="outline" asChild>
+                <Button variant="secondary" asChild>
                   <a
                     href="https://github.com/mfe-orchestrator"
                     target="_blank"
@@ -229,7 +229,7 @@ export default function StartNowPage() {
               </ul>
 
               <div className="pt-2">
-                <Button variant="outline" className="w-full" disabled>
+                <Button variant="secondary" className="w-full" disabled>
                   New features coming soon
                 </Button>
               </div>
@@ -247,7 +247,7 @@ export default function StartNowPage() {
             <p className="text-muted-foreground mb-6">
               Check out our comprehensive documentation for detailed guides and API references.
             </p>
-            <Button variant="outline" asChild>
+            <Button variant="secondary" asChild>
               <Link href="https://mfe-orchestrator.dev/documentation" className="w-full sm:w-auto">
                 View Documentation
               </Link>
