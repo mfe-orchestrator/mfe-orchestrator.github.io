@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@mfe-orchestrator/design-system':
-        specifier: ^1.1.0
-        version: 1.1.0(@types/react-dom@19.1.7(@types/react@19.1.10))(@types/react@19.1.10)(react-dom@19.1.0(react@19.1.0))(react-hook-form@7.62.0(react@19.1.0))(react@19.1.0)
+        specifier: ^1.2.0
+        version: 1.2.0(@types/react-dom@19.1.7(@types/react@19.1.10))(@types/react@19.1.10)(react-dom@19.1.0(react@19.1.0))(react-hook-form@7.62.0(react@19.1.0))(react@19.1.0)
       '@tsparticles/engine':
         specifier: ^3.9.1
         version: 3.9.1
@@ -330,8 +330,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.30':
     resolution: {integrity: sha512-GQ7Nw5G2lTu/BtHTKfXhKHok2WGetd4XYcVKGx00SjAk8GMwgJM3zr6zORiPGuOE+/vkc90KtTosSSvaCjKb2Q==}
 
-  '@mfe-orchestrator/design-system@1.1.0':
-    resolution: {integrity: sha512-rP8I3u6n33Q8skTsrJf04dJuYztTgplcaatCiQULhmUZjk0a4psx4mMCB6/bGRnAFDdL90T/igMMRHrNXXedVw==, tarball: https://npm.pkg.github.com/download/@mfe-orchestrator/design-system/1.1.0/d4837642be75a01ff6686634b7fefc890faedd5a}
+  '@mfe-orchestrator/design-system@1.2.0':
+    resolution: {integrity: sha512-3ABslCzK5T9MftcIT84FkhmZLu3Dh/v9lm5/WYqR8U5b5CMZ6rvNrxnQktrW/mLDezFGys6wqkCri5ppLg0eQg==, tarball: https://npm.pkg.github.com/download/@mfe-orchestrator/design-system/1.2.0/9ac7ef24ff58dbc7fad915f264d2c32a22e05055}
     engines: {node: '>=21.0.0'}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
@@ -2876,7 +2876,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@mfe-orchestrator/design-system@1.1.0(@types/react-dom@19.1.7(@types/react@19.1.10))(@types/react@19.1.10)(react-dom@19.1.0(react@19.1.0))(react-hook-form@7.62.0(react@19.1.0))(react@19.1.0)':
+  '@mfe-orchestrator/design-system@1.2.0(@types/react-dom@19.1.7(@types/react@19.1.10))(@types/react@19.1.10)(react-dom@19.1.0(react@19.1.0))(react-hook-form@7.62.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@radix-ui/react-accordion': 1.2.20(@types/react-dom@19.1.7(@types/react@19.1.10))(@types/react@19.1.10)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@radix-ui/react-avatar': 1.2.6(@types/react-dom@19.1.7(@types/react@19.1.10))(@types/react@19.1.10)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
