@@ -1,2 +1,3 @@
 minimumReleaseAgeExclude:
   - '@mfe-orchestrator/design-system'
+  - lucide-react@1.30.0
