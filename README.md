@@ -20,6 +20,21 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## The blog
+
+Posts are written in a hosted [Sanity](https://www.sanity.io) Studio and read
+from its API during `pnpm run build`, so what gets deployed is static HTML like
+the rest of the site. Publishing a post fires a webhook that rebuilds and
+redeploys the site.
+
+- Authoring: https://mfe-orchestrator.sanity.studio
+- Setup, webhook, and how the code is laid out: [docs/blog.md](docs/blog.md)
+- Working on the blog offline: `BLOG_FIXTURES=1 pnpm dev` renders two fake posts
+- Building with no blog at all: `SANITY_PROJECT_ID=off pnpm run build`
+
+The Studio itself lives in [`studio/`](studio/) as a separate project, with its
+own `package.json` and npm lockfile. It never enters the site's bundle.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

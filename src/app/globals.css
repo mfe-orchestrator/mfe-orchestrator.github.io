@@ -97,3 +97,136 @@ body::before {
 .iub__us-widget {
   background-color: color-mix(in oklab, var(--color-black) 30%, transparent);
 }
+
+/*
+ * Article typography.
+ *
+ * Blog bodies come from the CMS as Portable Text and are turned into markup by
+ * src/components/blog/ArticleBody.tsx, so the elements carry no Tailwind
+ * utilities: the styling has to live here, scoped to `.article`. Colours and
+ * radii are the design system's tokens, so an article matches the rest of the
+ * site without redefining the palette.
+ */
+.article {
+  color: hsl(var(--foreground));
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.article > * + * {
+  margin-top: 1.5rem;
+}
+
+.article h2 {
+  margin-top: 3rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: hsl(var(--foreground));
+}
+
+.article h3 {
+  margin-top: 2.5rem;
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: hsl(var(--foreground));
+}
+
+.article h4 {
+  margin-top: 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.article p {
+  color: hsl(var(--foreground) / 0.85);
+}
+
+.article a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.article a:hover {
+  color: hsl(var(--primary-glow));
+}
+
+.article strong {
+  font-weight: 700;
+  color: hsl(var(--foreground));
+}
+
+.article ul,
+.article ol {
+  padding-left: 1.5rem;
+  color: hsl(var(--foreground) / 0.85);
+}
+
+.article ul {
+  list-style: disc;
+}
+
+.article ol {
+  list-style: decimal;
+}
+
+.article li + li {
+  margin-top: 0.5rem;
+}
+
+.article blockquote {
+  border-left: 3px solid hsl(var(--primary));
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  font-style: italic;
+  color: hsl(var(--foreground));
+}
+
+.article blockquote p {
+  margin: 0;
+  color: inherit;
+}
+
+/* Inline code, as opposed to the code block below. */
+.article :not(pre) > code {
+  border-radius: 0.25rem;
+  background: hsl(var(--surface-variant));
+  padding: 0.15em 0.4em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875em;
+}
+
+.article pre {
+  overflow-x: auto;
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius, 0.5rem);
+  background: hsl(var(--surface));
+  padding: 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.article pre code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  background: none;
+  padding: 0;
+}
+
+.article hr {
+  border: 0;
+  border-top: 1px solid hsl(var(--border));
+}
+
+.article figure {
+  margin-top: 2rem;
+}
+
+.article figcaption {
+  margin-top: 0.75rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+}

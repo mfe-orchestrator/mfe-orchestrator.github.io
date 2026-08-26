@@ -8,6 +8,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { CORE_KEYWORDS, PRODUCT, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { hasPosts } from "@/lib/blog";
 import { organizationSchema, webSiteSchema } from "@/lib/structuredData";
 
 export const viewport: Viewport = {
@@ -66,11 +67,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // The blog is only advertised once it has something to show: an empty /blog
+  // in the header would be a dead end, and the page itself goes noindex in the
+  // same state. Reads the CMS at build time, like the blog pages do — if that
+  // read fails the build fails, which is the point (see src/lib/blog/client.ts).
+  const showBlog = await hasPosts();
+
   return (
     // The site is brand-dark: the `dark` class selects the design system's
     // dark token set (see globals.css).
@@ -84,14 +91,14 @@ export default function RootLayout({
       <body className="antialiased flex flex-col min-h-screen">
         <GoogleAnalyticsCustom />
         <ParticlesBackground />
-        <Navigation />
+        <Navigation showBlog={showBlog} />
         <Toaster position="top-right" richColors />
         <main className="pt-20 flex-grow">
           <div className="relative z-10">
             {children}
           </div>
         </main>
-        <Footer />
+        <Footer showBlog={showBlog} />
       </body>
     </html>
   );

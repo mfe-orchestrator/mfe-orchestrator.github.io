@@ -3,7 +3,9 @@
 import Link from 'next/link';
 import { useEffect } from 'react';
 
-export default function Footer() {
+/** `showBlog` comes from the root layout: the entry only appears once the CMS
+ *  has a published post (see hasPosts in @/lib/blog). */
+export default function Footer({ showBlog = false }: { showBlog?: boolean }) {
   const currentYear = new Date().getFullYear();
 
   const navItems = [
@@ -12,6 +14,7 @@ export default function Footer() {
     { name: 'Module Federation', href: '/module-federation' },
     { name: 'Documentation', href: 'https://mfe-orchestrator.dev/documentation' },
     // { name: 'Pricing', href: '/pricing' },
+    ...(showBlog ? [{ name: 'Blog', href: '/blog' }] : []),
     { name: 'FAQ', href: '/faq' },
     { name: 'Get started', href: '/start-now' },
     { name: 'About', href: '/about' },

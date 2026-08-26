@@ -166,3 +166,89 @@ export function howToSchema() {
     ],
   };
 }
+
+/**
+ * Structured data for the blog.
+ *
+ * Three kinds of page, three shapes:
+ * - /blog is an index: CollectionPage plus an ItemList pointing at the
+ *   articles. Index pages are exactly the case Google wants ItemList for.
+ * - /blog/[slug] is the article: BlogPosting, the only node Google uses for
+ *   article rich results.
+ * - /blog/category/[slug] is an archive, so a CollectionPage like the index.
+ *
+ * Every node references the site's canonical Organization and WebSite by @id
+ * instead of restating them, so the whole site stays one entity.
+ */
+
+export function blogIndexSchema({
+  path,
+  name,
+  description,
+  posts,
+}: {
+  path: string;
+  name: string;
+  description: string;
+  posts: readonly { slug: string; title: string }[];
+}) {
+  const url = `${SITE_URL}${path}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${url}#webpage`,
+    url,
+    name,
+    description,
+    inLanguage: "en",
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    mainEntity: {
+      // The list carries positions and URLs, not content: the article page is
+      // the only one that emits a BlogPosting, so there is exactly one node per
+      // post across the site.
+      "@type": "ItemList",
+      numberOfItems: posts.length,
+      itemListElement: posts.map((post, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: post.title,
+        url: `${SITE_URL}/blog/${post.slug}`,
+      })),
+    },
+  };
+}
+
+export function blogPostingSchema(post: {
+  slug: string;
+  title: string;
+  excerpt: string;
+  publishedAt: string;
+  updatedAt: string | null;
+  imageUrl?: string | null;
+  categories?: readonly string[];
+}) {
+  const url = `${SITE_URL}/blog/${post.slug}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${url}#article`,
+    headline: post.title,
+    description: post.excerpt,
+    url,
+    datePublished: post.publishedAt,
+    // Google expects dateModified even on a post that was never revised; there
+    // it simply equals the publication date.
+    dateModified: post.updatedAt ?? post.publishedAt,
+    inLanguage: "en",
+    author: { "@id": `${SITE_URL}/#organization` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    ...(post.imageUrl ? { image: post.imageUrl } : {}),
+    ...(post.categories?.length
+      ? { articleSection: [...post.categories] }
+      : {}),
+  };
+}

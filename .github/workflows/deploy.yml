@@ -5,7 +5,18 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+
+  # Manual rebuild, e.g. to pick up CMS content without pushing a commit.
   workflow_dispatch:
+
+  # A post was published in the CMS.
+  #
+  # The site is static HTML: blog content is read from Sanity during
+  # `pnpm run build`, so a freshly published post only appears online after a
+  # new build. The webhook configured in the Studio (see docs/blog.md) calls
+  # GitHub's repository_dispatch API with this event_type and does exactly that.
+  repository_dispatch:
+    types: [sanity-publish]
 
 permissions:
   contents: read
@@ -14,7 +25,9 @@ permissions:
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
+# Allow one concurrent deployment. Every run rebuilds the whole site from the
+# CMS, so the newest run always wins: an older one still in flight has nothing
+# to add, and letting two deploys race can put the earlier content online last.
 concurrency:
   group: "pages"
   cancel-in-progress: true
