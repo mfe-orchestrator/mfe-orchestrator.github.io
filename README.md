@@ -32,8 +32,9 @@ redeploys the site.
 - Working on the blog offline: `BLOG_FIXTURES=1 pnpm dev` renders two fake posts
 - Building with no blog at all: `SANITY_PROJECT_ID=off pnpm run build`
 
-The Studio itself lives in [`studio/`](studio/) as a separate project, with its
-own `package.json` and npm lockfile. It never enters the site's bundle.
+The Studio itself lives in [`studio/`](studio/) as a separate pnpm project, with
+its own workspace file and lockfile, so the site's `pnpm install` never pulls
+Sanity in. It never enters the site's bundle.
 
 ## Learn More
 

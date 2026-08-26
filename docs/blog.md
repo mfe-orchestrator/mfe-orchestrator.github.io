@@ -56,23 +56,28 @@ The Studio is the only part with an admin UI, and Sanity hosts it for free. From
 
 ```bash
 cd studio
-npm install
-npm run deploy      # claims mfe-orchestrator.sanity.studio and publishes
+pnpm install
+pnpm run deploy      # claims mfe-orchestrator.sanity.studio and publishes
 ```
 
-The first `npm run deploy` asks you to authenticate (`npx sanity login`) and
-prints an application id — paste it into `studio/sanity.cli.ts` as
+The first `pnpm run deploy` asks you to authenticate (`pnpm dlx sanity login`)
+and prints an application id — paste it into `studio/sanity.cli.ts` as
 `deployment.appId`, otherwise every later deploy stops to ask which application
 to update. After that it only needs rerunning when the schema in
 `studio/schemaTypes/` changes; the Studio pulls Sanity's own updates by itself.
 
-To work on the schema locally: `npm run dev` (Studio on http://localhost:3333,
+To work on the schema locally: `pnpm dev` (Studio on http://localhost:3333,
 pointed at the production dataset, so content edits are real) and
-`npm run validate` to check the schema.
+`pnpm run validate` to check the schema.
 
-> The Studio deliberately keeps its own `package.json` and `npm` lockfile: it is
-> a separate app, and its dependencies must not end up in the site's `pnpm`
-> install or its bundle.
+> **Why the Studio has its own `pnpm-workspace.yaml`.** It is a separate app and
+> its ~900 dependencies must not end up in the site's install or its bundle. But
+> pnpm walks up the tree looking for a workspace file and the repository root has
+> one, so without `studio/pnpm-workspace.yaml` an install here resolves against
+> that root and installs nothing. That file makes `studio/` its own pnpm root,
+> with its own lockfile and its own `node_modules`. Do not delete it, and do not
+> add `studio` to the root workspace's packages: the site's `pnpm install` in CI
+> would then install the whole Studio on every build.
 
 ### 3. The webhook that rebuilds the site
 
