@@ -209,6 +209,62 @@ body::before {
   line-height: 1.6;
 }
 
+/* A code block with a filename: the name sits in a strip on top of the block,
+ * so the two read as one object and the rounded corners stay continuous. */
+.article .code-block-name {
+  margin: 0;
+  border: 1px solid hsl(var(--border));
+  border-bottom: 0;
+  border-radius: var(--radius, 0.5rem) var(--radius, 0.5rem) 0 0;
+  background: hsl(var(--surface-variant));
+  padding: 0.5rem 1.25rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8125rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.article .code-block-name + pre {
+  border-radius: 0 0 var(--radius, 0.5rem) var(--radius, 0.5rem);
+}
+
+/* Tables come from the CMS with an unknown number of columns, so the table
+ * scrolls inside its own box rather than widening the article. */
+.article .table-scroll {
+  overflow-x: auto;
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius, 0.5rem);
+}
+
+.article table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.article th,
+.article td {
+  border-bottom: 1px solid hsl(var(--border));
+  padding: 0.75rem 1rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.article th {
+  background: hsl(var(--surface-variant));
+  font-weight: 600;
+  white-space: nowrap;
+  color: hsl(var(--foreground));
+}
+
+.article td {
+  color: hsl(var(--foreground) / 0.85);
+}
+
+.article tbody tr:last-child th,
+.article tbody tr:last-child td {
+  border-bottom: 0;
+}
+
 .article pre code {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   background: none;

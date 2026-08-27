@@ -135,28 +135,39 @@ export const blockContent = defineType({
       preview: { select: { title: "text", subtitle: "tone" } },
     }),
 
+    // The `code` type comes from @sanity/code-input (registered in
+    // sanity.config.ts): syntax highlighting, a language dropdown and an
+    // optional filename, instead of a bare textarea. The languages offered are
+    // the ones that actually show up in these posts — the list is a filter, not
+    // a limit on what the highlighter can do.
     defineArrayMember({
-      name: "code",
+      type: "code",
       title: "Code block",
-      type: "object",
-      description:
-        "Configuration snippets and examples. Rendered as-is, so paste it already formatted.",
-      fields: [
-        {
-          name: "language",
-          title: "Language",
-          type: "string",
-          description: "Optional, e.g. typescript, json, bash.",
-        },
-        {
-          name: "code",
-          title: "Code",
-          type: "text",
-          rows: 10,
-          validation: (Rule) => Rule.required(),
-        },
-      ],
-      preview: { select: { title: "code", subtitle: "language" } },
+      options: {
+        language: "typescript",
+        languageAlternatives: [
+          { title: "TypeScript", value: "typescript" },
+          { title: "TSX", value: "tsx" },
+          { title: "JavaScript", value: "javascript" },
+          { title: "JSON", value: "json" },
+          { title: "YAML", value: "yaml" },
+          { title: "Bash", value: "bash" },
+          { title: "HTML", value: "html" },
+          { title: "CSS", value: "css" },
+          { title: "Text", value: "text" },
+        ],
+        // Snippets in these posts are usually a named file
+        // (vite.config.ts, .github/workflows/deploy.yml): worth showing.
+        withFilename: true,
+      },
+    }),
+
+    // The `table` type comes from @sanity/table. It stores rows of plain
+    // strings and nothing else — no per-cell formatting, no colspan — so the
+    // serializer treats the first row as the header row by convention.
+    defineArrayMember({
+      type: "table",
+      title: "Table",
     }),
 
     defineArrayMember({

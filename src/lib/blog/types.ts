@@ -8,9 +8,26 @@ import type { PortableTextBlock } from "@portabletext/types";
  * src/lib/blog/client.ts and the queries, and nothing under src/app.
  */
 
+/** Sanity's hotspot: relative coordinates of the point that must survive a crop. */
+export interface Hotspot {
+  x: number;
+  y: number;
+  height: number;
+  width: number;
+}
+
+/** Sanity's crop: how much the author trimmed off each edge, as a fraction. */
+export interface Crop {
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+}
+
 /**
  * A reference to a Sanity image asset. The query does not return a URL — it
- * returns the asset reference, and imageUrl() derives the crops from it.
+ * returns the asset reference plus the author's framing, and imageUrl() derives
+ * the crops from both.
  */
 export interface CmsImage {
   ref: string;
@@ -20,12 +37,43 @@ export interface CmsImage {
   lqip: string | null;
   width: number | null;
   height: number | null;
+  hotspot: Hotspot | null;
+  crop: Crop | null;
 }
 
 export interface Category {
   title: string;
   slug: string;
   description: string | null;
+}
+
+/**
+ * The post's SEO overrides, from the `seoFields` object the Studio's
+ * "Search & social" tab writes (sanity-plugin-seofields).
+ *
+ * Every field is optional and every one has a fallback derived from the post
+ * itself, so a post with an untouched SEO tab is fully described. Only the
+ * fields the site renders are projected — see the seo block in queries.ts.
+ */
+export interface SocialOverrides {
+  title: string | null;
+  description: string | null;
+  /** Either an uploaded image or a URL typed into the plugin's `imageUrl`. */
+  image: CmsImage | null;
+  imageUrl: string | null;
+}
+
+export interface PostSeo {
+  metaTitle: string | null;
+  metaDescription: string | null;
+  keywords: string[];
+  /** Set only to point search engines at a different URL than the post's own. */
+  canonicalUrl: string | null;
+  metaImage: CmsImage | null;
+  noIndex: boolean;
+  noFollow: boolean;
+  openGraph: SocialOverrides | null;
+  twitter: (SocialOverrides & { card: string | null }) | null;
 }
 
 /** Everything a card needs: no body, which is by far the heaviest field. */
@@ -42,8 +90,5 @@ export interface PostSummary {
 
 export interface Post extends PostSummary {
   body: PortableTextBlock[];
-  /** SEO overrides. When empty, title and excerpt are used instead. */
-  metaTitle: string | null;
-  metaDescription: string | null;
-  noIndex: boolean;
+  seo: PostSeo;
 }

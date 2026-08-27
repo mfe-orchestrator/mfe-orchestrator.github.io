@@ -1,6 +1,6 @@
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 import { imageUrl } from "./image";
-import type { PostSummary } from "./types";
+import type { Post, PostSummary, SocialOverrides } from "./types";
 
 /**
  * The bridge between CMS content and page metadata.
@@ -29,6 +29,53 @@ export function ogImage(post: PostSummary): { url: string; alt: string } {
     FALLBACK_OG_IMAGE;
 
   return { url, alt: cover?.alt || post.title };
+}
+
+/**
+ * The card image for one social channel, resolved through the SEO tab.
+ *
+ * Four steps down, each a deliberate fallback rather than a coincidence:
+ * the channel's own override (an upload, or a URL typed into the plugin), then
+ * the shared meta image, then the post's cover, then the site card. So a post
+ * that never had its SEO tab opened still gets a correct, specific preview.
+ */
+export function socialImage(
+  post: Post,
+  channel: "openGraph" | "twitter",
+): { url: string; alt: string } {
+  const override: SocialOverrides | null = post.seo[channel];
+  const candidates = [override?.image, post.seo.metaImage, post.coverImage];
+
+  for (const image of candidates) {
+    if (!image) continue;
+    const url = imageUrl(image, {
+      width: OG_WIDTH,
+      height: OG_HEIGHT,
+      crop: true,
+    });
+    if (url) return { url, alt: image.alt || post.title };
+  }
+
+  // A URL typed by hand cannot be resized, so it is only worth using once no
+  // uploaded image is available.
+  if (override?.imageUrl) {
+    return { url: override.imageUrl, alt: override.title || post.title };
+  }
+
+  return { url: FALLBACK_OG_IMAGE, alt: post.title };
+}
+
+/** Title and description for one channel, falling back to the page's own. */
+export function socialText(
+  post: Post,
+  channel: "openGraph" | "twitter",
+  fallback: { title: string; description: string },
+): { title: string; description: string } {
+  const override = post.seo[channel];
+  return {
+    title: override?.title || fallback.title,
+    description: override?.description || fallback.description,
+  };
 }
 
 /**

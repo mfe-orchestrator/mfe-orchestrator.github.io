@@ -126,39 +126,17 @@ export const post = defineType({
       validation: (Rule) => Rule.required(),
     }),
 
+    // The SEO tab comes from sanity-plugin-seofields (registered in
+    // sanity.config.ts as the `seoFields` object type). Everything in it is
+    // optional: left empty, the post's own title, excerpt and cover image are
+    // used, which is almost always the right answer. The fields the site reads
+    // are projected in src/lib/blog/queries.ts — the ones it does not read are
+    // hidden in the plugin config rather than left to be filled in for nothing.
     defineField({
       name: "seo",
       title: "Search & social",
-      type: "object",
+      type: "seoFields",
       group: "seo",
-      description:
-        "Only worth touching when needed: left empty, the post's own title and excerpt are used, which is almost always right.",
-      options: { collapsible: true, collapsed: false },
-      fields: [
-        {
-          name: "metaTitle",
-          title: "Search title",
-          type: "string",
-          validation: (Rule) => Rule.max(70),
-          description:
-            "For when the post title reads well but nobody searches for it. Put the phrasing people actually type here.",
-        },
-        {
-          name: "metaDescription",
-          title: "Search description",
-          type: "text",
-          rows: 2,
-          validation: (Rule) => Rule.max(200),
-        },
-        {
-          name: "noIndex",
-          title: "Hide from search engines",
-          type: "boolean",
-          initialValue: false,
-          description:
-            "The post stays reachable for anyone with the link, but asks Google not to index it.",
-        },
-      ],
     }),
   ],
 

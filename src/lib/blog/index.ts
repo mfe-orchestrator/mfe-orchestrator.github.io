@@ -8,7 +8,14 @@ import {
   POSTS_BY_CATEGORY,
   RELATED_POSTS,
 } from "./queries";
-import type { Category, CmsImage, Post, PostSummary } from "./types";
+import type {
+  Category,
+  CmsImage,
+  Post,
+  PostSeo,
+  PostSummary,
+  SocialOverrides,
+} from "./types";
 
 /**
  * The blog API the pages use.
@@ -18,7 +25,14 @@ import type { Category, CmsImage, Post, PostSummary } from "./types";
  * `next build`, since the site is a static export.
  */
 
-export type { Category, CmsImage, Post, PostSummary } from "./types";
+export type {
+  Category,
+  CmsImage,
+  Post,
+  PostSeo,
+  PostSummary,
+  SocialOverrides,
+} from "./types";
 
 // Fake content for working locally before the CMS has anything in it:
 // `BLOG_FIXTURES=1 pnpm dev`. Never set in CI, so it cannot reach production.
@@ -66,6 +80,56 @@ function normalizeImage(image: CmsImage | null): CmsImage | null {
   return image && image.ref ? image : null;
 }
 
+/**
+ * The SEO tab as it comes out of GROQ. Sanity returns an object with every key
+ * null for an object field that was never opened, so nothing here can be
+ * trusted to exist.
+ */
+type RawSeo = {
+  [K in keyof PostSeo]: PostSeo[K] | null;
+};
+
+function toSocial(raw: SocialOverrides | null): SocialOverrides | null {
+  if (!raw) return null;
+  const social: SocialOverrides = {
+    title: raw.title ?? null,
+    description: raw.description ?? null,
+    image: normalizeImage(raw.image),
+    imageUrl: raw.imageUrl ?? null,
+  };
+  // An untouched tab projects to an object of nulls, which is not an override.
+  return social.title || social.description || social.image || social.imageUrl
+    ? social
+    : null;
+}
+
+function toSeo(raw: RawSeo | null): PostSeo {
+  const twitter = raw?.twitter ?? null;
+  const twitterSocial = toSocial(twitter);
+
+  return {
+    metaTitle: raw?.metaTitle ?? null,
+    metaDescription: raw?.metaDescription ?? null,
+    keywords: raw?.keywords ?? [],
+    canonicalUrl: raw?.canonicalUrl ?? null,
+    metaImage: normalizeImage(raw?.metaImage ?? null),
+    noIndex: raw?.noIndex ?? false,
+    noFollow: raw?.noFollow ?? false,
+    openGraph: toSocial(raw?.openGraph ?? null),
+    twitter:
+      twitterSocial || twitter?.card
+        ? { ...(twitterSocial ?? EMPTY_SOCIAL), card: twitter?.card ?? null }
+        : null,
+  };
+}
+
+const EMPTY_SOCIAL: SocialOverrides = {
+  title: null,
+  description: null,
+  image: null,
+  imageUrl: null,
+};
+
 function toSummary(raw: RawSummary): PostSummary {
   return {
     slug: raw.slug,
@@ -105,18 +169,14 @@ export async function getPost(slug: string): Promise<Post | null> {
   if (!isCmsConfigured()) return null;
 
   const raw = await query<
-    | (RawSummary &
-        Pick<Post, "body" | "metaTitle" | "metaDescription" | "noIndex">)
-    | null
+    (RawSummary & { body: Post["body"]; seo: RawSeo | null }) | null
   >(POST_BY_SLUG, { slug });
   if (!raw) return null;
 
   return {
     ...toSummary(raw),
     body: raw.body ?? [],
-    metaTitle: raw.metaTitle ?? null,
-    metaDescription: raw.metaDescription ?? null,
-    noIndex: raw.noIndex ?? false,
+    seo: toSeo(raw.seo),
   };
 }
 

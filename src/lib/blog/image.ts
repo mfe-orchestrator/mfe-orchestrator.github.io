@@ -1,3 +1,7 @@
+import {
+  createImageUrlBuilder,
+  type SanityImageSource,
+} from "@sanity/image-url";
 import { CMS } from "./client";
 import type { CmsImage } from "./types";
 
@@ -9,49 +13,63 @@ import type { CmsImage } from "./types";
  * Next optimizer never runs. Asking the CDN for the crops instead (it can
  * resize, recompress and serve AVIF/WebP) gives a real srcset, which
  * `unoptimized` would otherwise take away.
+ *
+ * The URLs are built with @sanity/image-url rather than by hand, for one
+ * reason: the hotspot. Both image fields in the Studio schema enable it, so an
+ * author can mark the part of a picture that must survive cropping — and honour
+ * it is something only the builder does, by turning the stored hotspot and crop
+ * into the right `rect`/`fp-x`/`fp-y` parameters. Hand-rolled URLs had to fall
+ * back to `crop=entropy`, which guesses, and cheerfully guesses wrong on the
+ * 1:1 crops the index cards ask for.
  */
 
-// A Sanity asset reference looks like `image-<assetId>-<width>x<height>-<ext>`.
-const REF = /^image-([a-zA-Z0-9]+)-(\d+x\d+)-(\w+)$/;
+// The builder needs no client, only the coordinates: it is pure URL assembly
+// with no network access, which is why it can run during a static export.
+const builder = createImageUrlBuilder({
+  projectId: CMS.projectId,
+  dataset: CMS.dataset,
+});
 
 interface Transform {
   width?: number;
   height?: number;
   quality?: number;
   /**
-   * Crop around the image's point of interest. Needed by fixed-ratio cards,
-   * where the original can have any shape.
+   * Crop to the requested box around the image's point of interest. Needed by
+   * fixed-ratio cards, where the original can have any shape.
    */
   crop?: boolean;
 }
 
-function assetPath(ref: string): string | null {
-  const match = REF.exec(ref);
-  if (!match) return null;
-  const [, assetId, dimensions, extension] = match;
-  return `${assetId}-${dimensions}.${extension}`;
+/**
+ * The shape the builder expects. The GROQ projection flattens the asset to a
+ * bare reference (see queries.ts), so it is rebuilt here.
+ */
+function toSource(image: CmsImage): SanityImageSource {
+  return {
+    _type: "image",
+    asset: { _type: "reference", _ref: image.ref },
+    ...(image.hotspot ? { hotspot: image.hotspot } : {}),
+    ...(image.crop ? { crop: image.crop } : {}),
+  };
 }
 
 export function imageUrl(
   image: CmsImage,
   { width, height, quality = 80, crop = false }: Transform = {},
 ): string | null {
-  const path = assetPath(image.ref);
-  if (!path) return null;
+  if (!image.ref) return null;
 
-  const url = new URL(
-    `https://cdn.sanity.io/images/${CMS.projectId}/${CMS.dataset}/${path}`,
-  );
-  if (width) url.searchParams.set("w", String(width));
-  if (height) url.searchParams.set("h", String(height));
+  let url = builder.image(toSource(image)).quality(quality).auto("format");
+  if (width) url = url.width(width);
+  if (height) url = url.height(height);
   if (crop) {
-    url.searchParams.set("fit", "crop");
-    url.searchParams.set("crop", "entropy");
+    // `focalpoint` is what makes the hotspot count; without a hotspot on the
+    // asset the builder falls back to the centre of the image.
+    url = url.fit("crop").crop("focalpoint");
   }
-  url.searchParams.set("q", String(quality));
-  // Let the CDN pick the best format the requesting browser accepts.
-  url.searchParams.set("auto", "format");
-  return url.toString();
+
+  return url.url();
 }
 
 /**

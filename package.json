@@ -13,6 +13,7 @@
     "@mfe-orchestrator/design-system": "^1.3.0",
     "@portabletext/react": "^8.0.1",
     "@portabletext/types": "^4.0.2",
+    "@sanity/image-url": "^2.1.1",
     "@tsparticles/engine": "^3.9.1",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.9.1",

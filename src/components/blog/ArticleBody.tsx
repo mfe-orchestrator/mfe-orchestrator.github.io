@@ -27,9 +27,17 @@ interface CalloutValue {
   text?: string;
 }
 
+/** @sanity/code-input's value. `highlightedLines` is ignored: rendering it
+ *  would need a real highlighter in the page, and the site ships none. */
 interface CodeValue {
   code?: string;
   language?: string;
+  filename?: string;
+}
+
+/** @sanity/table's value: rows of plain strings, no per-cell formatting. */
+interface TableValue {
+  rows?: { _key?: string; cells?: string[] }[];
 }
 
 const CALLOUT_TONES = {
@@ -127,14 +135,51 @@ const components: PortableTextComponents = {
     },
 
     code: ({ value }) => {
-      const { code, language } = (value ?? {}) as CodeValue;
+      const { code, language, filename } = (value ?? {}) as CodeValue;
       if (!code) return null;
       return (
-        <pre>
-          <code className={language ? `language-${language}` : undefined}>
-            {code}
-          </code>
-        </pre>
+        <div className="code-block">
+          {filename && <p className="code-block-name">{filename}</p>}
+          <pre>
+            <code className={language ? `language-${language}` : undefined}>
+              {code}
+            </code>
+          </pre>
+        </div>
+      );
+    },
+
+    // The plugin stores no header flag, so the first row is the header by
+    // convention — which is also the only arrangement that makes sense for the
+    // comparison tables these posts use.
+    table: ({ value }) => {
+      const rows = ((value ?? {}) as TableValue).rows ?? [];
+      if (rows.length === 0) return null;
+      const [header, ...body] = rows;
+
+      return (
+        <div className="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                {(header.cells ?? []).map((cell, index) => (
+                  <th key={index} scope="col">
+                    {cell}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {body.map((row, rowIndex) => (
+                <tr key={row._key ?? rowIndex}>
+                  {(row.cells ?? []).map((cell, index) => (
+                    <td key={index}>{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       );
     },
 

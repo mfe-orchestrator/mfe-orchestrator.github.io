@@ -1,5 +1,5 @@
 import type { PortableTextBlock } from "@portabletext/types";
-import type { Category, Post, PostSummary } from "./types";
+import type { Category, Post, PostSeo, PostSummary } from "./types";
 
 /**
  * Placeholder posts for local development, active only with BLOG_FIXTURES=1.
@@ -21,6 +21,19 @@ const CATEGORIES: Category[] = [
     description: "Versioning, canary releases and rollbacks across environments.",
   },
 ];
+
+/** An untouched "Search & social" tab, which is how most posts ship. */
+const NO_SEO: PostSeo = {
+  metaTitle: null,
+  metaDescription: null,
+  keywords: [],
+  canonicalUrl: null,
+  metaImage: null,
+  noIndex: false,
+  noFollow: false,
+  openGraph: null,
+  twitter: null,
+};
 
 // Minimal Portable Text builders. The fixtures are content, not a test of the
 // serializer, so paragraphs, headings and lists are enough.
@@ -56,12 +69,30 @@ function listItem(text: string): PortableTextBlock {
   } as PortableTextBlock;
 }
 
-function code(source: string, language = "json"): PortableTextBlock {
+function code(
+  source: string,
+  language = "json",
+  filename?: string,
+): PortableTextBlock {
   return {
     _type: "code",
     _key: nextKey(),
     language,
+    filename,
     code: source,
+  } as unknown as PortableTextBlock;
+}
+
+/** @sanity/table's shape: rows of plain strings, first row as the header. */
+function table(rows: string[][]): PortableTextBlock {
+  return {
+    _type: "table",
+    _key: nextKey(),
+    rows: rows.map((cells) => ({
+      _type: "tableRow",
+      _key: nextKey(),
+      cells,
+    })),
   } as unknown as PortableTextBlock;
 }
 
@@ -76,9 +107,7 @@ const POSTS: Post[] = [
     readingMinutes: 6,
     coverImage: null,
     categories: [CATEGORIES[0], CATEGORIES[1]],
-    metaTitle: null,
-    metaDescription: null,
-    noIndex: false,
+    seo: NO_SEO,
     body: [
       block(
         "Teams adopt Module Federation to stop rebuilding the shell every time a remote changes. Then the first production incident arrives, somebody asks which version of the checkout remote is live in UAT, and nobody can answer without opening a pipeline log.",
@@ -106,7 +135,19 @@ const POSTS: Post[] = [
     "search": "1.7.3"
   }
 }`,
+        "json",
+        "environments/uat.json",
       ),
+      block(
+        "Which leaves a clear division of labour between the bundler and the control plane:",
+      ),
+      table([
+        ["Concern", "Module Federation", "Orchestrator"],
+        ["Resolve a remote at runtime", "Yes", "—"],
+        ["Which version an environment serves", "No", "Yes"],
+        ["Roll one environment back", "No", "Yes"],
+        ["Shift traffic gradually", "No", "Yes"],
+      ]),
       block(
         "A rollback is then editing one assignment, not rebuilding and redeploying a shell nobody changed.",
       ),
@@ -122,9 +163,7 @@ const POSTS: Post[] = [
     readingMinutes: 5,
     coverImage: null,
     categories: [CATEGORIES[1]],
-    metaTitle: null,
-    metaDescription: null,
-    noIndex: false,
+    seo: NO_SEO,
     body: [
       block(
         "Backend canaries are a routing problem, so they live in the mesh. Frontend canaries are a resolution problem: the browser decides what to download, and it decides once, at boot.",

@@ -17,7 +17,13 @@ import {
   readingLabel,
   withPlaceholder,
 } from "@/lib/blog";
-import { OG_HEIGHT, OG_WIDTH, ogImage, toPostRef } from "@/lib/blog/seo";
+import {
+  OG_HEIGHT,
+  OG_WIDTH,
+  socialImage,
+  socialText,
+  toPostRef,
+} from "@/lib/blog/seo";
 import { CORE_KEYWORDS, SITE_NAME, SITE_URL } from "@/lib/seo";
 import { blogPostingSchema, breadcrumbSchema } from "@/lib/structuredData";
 
@@ -47,27 +53,33 @@ export async function generateMetadata({
     };
   }
 
-  const title = post.metaTitle || post.title;
-  const description = post.metaDescription || post.excerpt;
-  const image = ogImage(post);
+  // Everything below comes from the Studio's "Search & social" tab where it was
+  // filled in, and from the post itself where it was not.
+  const { seo } = post;
+  const title = seo.metaTitle || post.title;
+  const description = seo.metaDescription || post.excerpt;
   const url = `${SITE_URL}/blog/${post.slug}`;
+
+  const og = socialText(post, "openGraph", { title, description });
+  const ogImg = socialImage(post, "openGraph");
+  const tw = socialText(post, "twitter", { title, description });
+  const twImg = socialImage(post, "twitter");
 
   return {
     title,
     description,
     keywords: [
+      ...seo.keywords,
       ...post.categories.map((category) => category.title),
       ...CORE_KEYWORDS,
     ],
-    alternates: { canonical: url },
-    // `noIndex` is a checkbox in the Studio, for posts that need to exist
-    // without showing up in search results.
-    robots: post.noIndex
-      ? { index: false, follow: true }
-      : { index: true, follow: true },
+    // A canonical typed into the SEO tab wins: that field exists precisely for
+    // a post that is a secondary copy of something published elsewhere.
+    alternates: { canonical: seo.canonicalUrl || url },
+    robots: { index: !seo.noIndex, follow: !seo.noFollow },
     openGraph: {
-      title,
-      description,
+      title: og.title,
+      description: og.description,
       url,
       siteName: SITE_NAME,
       locale: "en_US",
@@ -75,14 +87,15 @@ export async function generateMetadata({
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt ?? post.publishedAt,
       images: [
-        { url: image.url, width: OG_WIDTH, height: OG_HEIGHT, alt: image.alt },
+        { url: ogImg.url, width: OG_WIDTH, height: OG_HEIGHT, alt: ogImg.alt },
       ],
     },
     twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [image.url],
+      card:
+        seo.twitter?.card === "summary" ? "summary" : "summary_large_image",
+      title: tw.title,
+      description: tw.description,
+      images: [twImg.url],
     },
   };
 }

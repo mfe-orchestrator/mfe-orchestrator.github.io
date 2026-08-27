@@ -125,6 +125,67 @@ to the content of the first build. That is why the queries carry a
 `revalidate: 5` and why the workflow caches only the pnpm store. Do not add a
 `.next/cache` step: it buys a few seconds of build time and costs correctness.
 
+## Studio plugins
+
+Four plugins, each backing one type or one tab. The rule they all follow: a
+field visible in the Studio is a field the site renders. Anything else gets
+hidden or removed, because a panel that invites an author to fill in something
+the site ignores is worse than no panel.
+
+| Plugin | What it gives the author | Where the site reads it |
+|---|---|---|
+| `@sanity/code-input` | the `code` block: syntax highlighting, language dropdown, filename | `ArticleBody.tsx` → `code` |
+| `@sanity/table` | the `table` block: rows of plain strings | `ArticleBody.tsx` → `table` |
+| `sanity-plugin-seofields` | the post's "Search & social" tab (`seoFields`) | the `seo` projection in `queries.ts`, consumed in `blog/[slug]/page.tsx` |
+| `@sanity/vision` | GROQ console, for trying a query before it goes in the site | — (authoring tool) |
+
+Two details worth knowing:
+
+- **Tables have no header flag.** `@sanity/table` stores rows and nothing else,
+  so the serializer treats the **first row as the header**. There is no way to
+  mark a table as headerless; if you need one, put a dash in the first row.
+- **The code block's highlighted lines are not rendered.** The plugin lets you
+  click line numbers to highlight them; showing that on the site would need a
+  syntax highlighter in the page, and the site ships none — code blocks are
+  static markup. The language and the filename are rendered.
+
+### The SEO tab
+
+`seoFields` offers far more than a blog needs, so the plugin is configured down
+to what the site actually consumes (`studio/sanity.config.ts`):
+
+- **Search**: title, description, keywords, canonical URL, meta image, robots
+  (`noIndex` / `noFollow`), plus the live SERP preview
+- **Open Graph** and **X / Twitter**: title, description, image, card type
+- switched off: focus keyword, hreflangs (the site is English-only), custom meta
+  attributes, the GEO checklist and the meta-tag HTML preview
+
+Every field is optional, and each has a fallback derived from the post: title →
+post title, description → excerpt, images → cover image → the site card. A post
+whose SEO tab was never opened is still fully described. The plugin's own
+`buildSeoMeta` helper is deliberately **not** used: the site keeps its metadata
+pipeline in `src/lib/seo.ts` and reads these fields as plain data, so a Studio
+plugin never becomes a dependency of the website.
+
+### Plugins that were removed
+
+- `sanity-plugin-another-table` — a Sanity **v2** plugin (`sanity.json` /
+  `parts`, peer dependency on `@sanity/base@^2.30`, React 17). It cannot load in
+  Studio 6. `@sanity/table` replaces it.
+- `sanity-plugin-markdown` — an alternative body format, not an addition.
+  Portable Text stays the single format: the markup is decided by one serializer
+  in the site, which is what keeps CMS-authored HTML out of the pages and means
+  restyling the blog never touches a post.
+- `next-sanity` — a toolkit for querying and live-previewing from Next.js. It
+  belongs to a website, not to the Studio, and this website does not need it:
+  `src/lib/blog/client.ts` is a plain `fetch` against the query API, which is
+  all a build-time read of a public dataset requires.
+- `@sanity/image-url` — moved out of the Studio and into the **site**, where it
+  is used (`src/lib/blog/image.ts`). It is the reason the hotspot works: both
+  image fields enable it, and turning a stored hotspot into the right CDN
+  parameters is what the builder does. Hand-rolled URLs had to fall back to
+  `crop=entropy`, which guesses.
+
 ## Writing a post
 
 1. https://mfe-orchestrator.sanity.studio → **Post** → Create.
@@ -157,7 +218,7 @@ src/lib/blog/
   queries.ts    the queries: the only place that knows the CMS schema
   types.ts      the shape content takes for the rest of the app
   index.ts      the API pages use (getPosts, getPost, ...)
-  image.ts      URLs and srcsets from Sanity's image CDN
+  image.ts      URLs and srcsets from Sanity's image CDN, hotspot included
   seo.ts        social images and the data structured data needs
   fixtures.ts   fake posts for local development
 src/components/blog/

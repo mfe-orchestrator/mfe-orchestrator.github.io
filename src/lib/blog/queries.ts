@@ -7,15 +7,19 @@
  */
 
 // An image projection returns the asset reference, not a URL: imageUrl() turns
-// it into the crops the page asks for. `lqip` is the blur placeholder Sanity
-// computes on upload, used as a background while the real file downloads.
+// it into the crops the page asks for. `hotspot` and `crop` are the author's
+// framing, and they come along because the URL builder needs them to keep the
+// chosen subject inside a fixed-ratio crop. `lqip` is the blur placeholder
+// Sanity computes on upload, used as a background while the real file downloads.
 const IMAGE = `{
   "ref": asset._ref,
   "alt": coalesce(alt, ""),
   caption,
   "lqip": asset->metadata.lqip,
   "width": asset->metadata.dimensions.width,
-  "height": asset->metadata.dimensions.height
+  "height": asset->metadata.dimensions.height,
+  hotspot,
+  crop
 }`;
 
 const CATEGORIES = `categories[]->{ title, "slug": slug.current, description }`;
@@ -41,6 +45,16 @@ const SUMMARY = `{
 // author would have no way to tell why.
 const PUBLISHED = `_type == "post" && defined(slug.current) && defined(publishedAt)`;
 
+// The plugin's Open Graph / Twitter tabs. Both offer either an uploaded image
+// or a typed URL (`imageType` picks which), so both come back and the site
+// prefers the upload.
+const SOCIAL = `{
+  title,
+  description,
+  "image": image ${IMAGE},
+  imageUrl
+}`;
+
 export const POSTS = `*[${PUBLISHED}] | order(publishedAt desc) ${SUMMARY}`;
 
 export const POST_SLUGS = `*[${PUBLISHED}].slug.current`;
@@ -62,9 +76,23 @@ export const POST_BY_SLUG = `*[${PUBLISHED} && slug.current == $slug][0] {
       _type == "internalLink" => { "href": @.reference->slug.current }
     }
   },
-  "metaTitle": seo.metaTitle,
-  "metaDescription": seo.metaDescription,
-  "noIndex": coalesce(seo.noIndex, false)
+  "seo": {
+    "metaTitle": seo.title,
+    "metaDescription": seo.description,
+    "keywords": coalesce(seo.keywords, []),
+    "canonicalUrl": seo.canonicalUrl,
+    "metaImage": seo.metaImage ${IMAGE},
+    "noIndex": coalesce(seo.robots.noIndex, false),
+    "noFollow": coalesce(seo.robots.noFollow, false),
+    "openGraph": seo.openGraph ${SOCIAL},
+    "twitter": seo.twitter {
+      card,
+      title,
+      description,
+      "image": image ${IMAGE},
+      imageUrl
+    }
+  }
 }`;
 
 // Only categories with at least one published post. An empty category would
