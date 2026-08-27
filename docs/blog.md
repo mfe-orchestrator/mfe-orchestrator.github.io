@@ -12,7 +12,8 @@ Write on mfe-orchestrator.sanity.studio  (Sanity Studio, hosted)
         ▼
 Sanity webhook  →  GitHub repository_dispatch (sanity-publish)
         ▼
-GitHub Actions: pnpm run build   (reads posts from Sanity's API)
+GitHub Actions: CMS rebuild  →  Deploy to GitHub Pages
+                (pnpm run build, reading posts from Sanity's API)
         ▼
 GitHub Pages  →  mfe-orchestrator.dev/blog/...   static HTML
 ```
@@ -86,12 +87,37 @@ a fine-grained token with:
 
 - Repository access: only `mfe-orchestrator/mfe-orchestrator.github.io`
 - Permissions → Repository → **Contents: Read and write**
-  (this is what enables `repository_dispatch`)
+  (this is what authorises `repository_dispatch`)
 - Expiry: the longest you can accept. **When it expires the blog stops
   self-updating** — manual runs and pushes still deploy.
 
-**b) Sanity webhook.** At
-https://www.sanity.io/manage/project/jgs8u5dy/api/webhooks → *Create webhook*:
+**b) Sanity token.** At
+https://www.sanity.io/manage/project/jgs8u5dy/api → *Tokens* → *Add API token*,
+role **Administrator**. It is used once, by the script below, to create the
+webhook; the build never sees it.
+
+**c) Create the webhook.**
+
+```bash
+SANITY_AUTH_TOKEN=<token from b> \
+GITHUB_DISPATCH_TOKEN=<token from a> \
+  ./scripts/create-sanity-webhook.sh
+```
+
+Re-running is safe: the script stops if a webhook already points at the same
+URL. Neither token is read from a file, written to one, or echoed.
+
+The script exists because two of the nine fields — the GROQ filter and the
+projection — are the ones that silently break the chain when mistyped: a wrong
+projection still gets a `204` out of GitHub, and no build ever starts. The
+Sanity CLI is no help here; `sanity hooks create` only opens the Manage UI in a
+browser.
+
+<details>
+<summary>The same thing by hand, if you would rather use the UI</summary>
+
+At https://www.sanity.io/manage/project/jgs8u5dy/api/webhooks →
+*Create webhook*:
 
 | Field | Value |
 |---|---|
@@ -106,17 +132,26 @@ https://www.sanity.io/manage/project/jgs8u5dy/api/webhooks → *Create webhook*:
 | API version | `v2025-02-19` |
 | Headers | `Authorization: Bearer <token from step a>`<br>`Accept: application/vnd.github+json` |
 
-*Projection* is the request body: `event_type` must be exactly
-`sanity-publish`, the type declared in `.github/workflows/deploy.yml`.
+</details>
 
-**c) Check it.** Publish a test post and look at two things: the webhook's
-*Attempt log* (expect `204`) and a new run appearing in
+**d) Check it.** Publish a test post and look at two things: the webhook's
+*Attempt log* (expect `204`) at
+https://www.sanity.io/manage/project/jgs8u5dy/api/webhooks, and a **CMS
+rebuild** run appearing in
 https://github.com/mfe-orchestrator/mfe-orchestrator.github.io/actions.
 
-If the webhook is missing or broken the site still updates on every push to
-`main`, and the *Deploy to GitHub Pages* workflow can be run by hand.
+To test the GitHub half on its own, without touching content — this needs no
+Sanity webhook and no PAT, only a logged-in `gh`:
 
-**d) Green run, old content.** If a rebuild finishes clean and the site still
+```bash
+gh api -X POST repos/mfe-orchestrator/mfe-orchestrator.github.io/dispatches \
+  -f event_type=sanity-publish
+```
+
+If the webhook is missing or broken the site still updates on every push to
+`main`, and *Deploy to GitHub Pages* can be run by hand.
+
+**e) Green run, old content.** If a rebuild finishes clean and the site still
 shows the previous version of a post, suspect Next's fetch cache before the
 webhook. The CMS reads live in `src/lib/blog/client.ts`, and Next stores each
 response under `.next/cache/fetch-cache`; a `force-cache` there gets a one-year
@@ -124,6 +159,34 @@ TTL, so any workflow step that restores `.next/cache` between runs pins the blog
 to the content of the first build. That is why the queries carry a
 `revalidate: 5` and why the workflow caches only the pnpm store. Do not add a
 `.next/cache` step: it buys a few seconds of build time and costs correctness.
+
+## The two pipelines
+
+```
+.github/workflows/
+  deploy.yml        push to main, pull_request, manual, workflow_call
+  cms-rebuild.yml   repository_dispatch (sanity-publish) -> calls deploy.yml
+```
+
+Both end in the same deploy, and the build exists once — `cms-rebuild.yml` calls
+`deploy.yml` rather than repeating it, so there is no second copy to keep in
+step. What the split buys is legibility: in the Actions tab, *Deploy to GitHub
+Pages* runs are code changes and *CMS rebuild* runs are content changes, which
+is the first thing you want to know when the site shows something unexpected.
+
+Two things about this arrangement that are easy to get wrong:
+
+- **The two workflows must not share a concurrency group.** `cms-rebuild.yml`
+  and the `deploy.yml` run it calls are two separate runs. If both waited on
+  `pages`, the caller would hold the group while the callee queued behind it,
+  and the rebuild would never start. So the caller has its own group,
+  `cms-rebuild` — which still collapses a burst of publications into one
+  rebuild — and `pages` stays on the workflow that actually deploys.
+- **A called workflow gets no secrets unless they are passed.** Hence
+  `secrets: inherit` in `cms-rebuild.yml`; without it the build loses the
+  reCAPTCHA key and the Search Console token. Permissions work the other way
+  round: a called workflow can drop them but never add them, so the set granted
+  in the caller has to cover everything `deploy.yml` does.
 
 ## Studio plugins
 
@@ -235,6 +298,10 @@ src/app/blog/
   category/[slug]/page.tsx  /blog/category/category-name
   rss.xml/route.ts          /blog/rss.xml
 studio/                     the CMS: separate project, never part of the site
+scripts/create-sanity-webhook.sh  creates the publish -> rebuild webhook
+.github/workflows/
+  deploy.yml                build and deploy; also callable
+  cms-rebuild.yml           what a publication in the CMS triggers
 ```
 
 Pages import from `src/lib/blog` and nothing deeper: they know neither GROQ nor
