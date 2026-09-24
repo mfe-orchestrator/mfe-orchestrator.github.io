@@ -41,6 +41,22 @@ export interface CmsImage {
   crop: Crop | null;
 }
 
+/**
+ * The person a post is attributed to.
+ *
+ * Only what the Person node of a post's linked data needs. `links` becomes
+ * sameAs, which is what lets an engine tie the byline to the accounts it can
+ * already see — a name on its own asserts expertise, a name plus profiles
+ * lets it be checked.
+ */
+export interface Author {
+  name: string;
+  role: string | null;
+  bio: string | null;
+  image: CmsImage | null;
+  links: string[];
+}
+
 export interface Category {
   title: string;
   slug: string;
@@ -91,4 +107,6 @@ export interface PostSummary {
 export interface Post extends PostSummary {
   body: PortableTextBlock[];
   seo: PostSeo;
+  /** Null on posts written before authors existed: they stay with the project. */
+  author: Author | null;
 }

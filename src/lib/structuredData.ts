@@ -231,6 +231,12 @@ export function blogPostingSchema(post: {
   updatedAt: string | null;
   imageUrl?: string | null;
   categories?: readonly string[];
+  author?: {
+    name: string;
+    role: string | null;
+    bio: string | null;
+    links: readonly string[];
+  } | null;
 }) {
   const url = `${SITE_URL}/blog/${post.slug}`;
 
@@ -246,7 +252,20 @@ export function blogPostingSchema(post: {
     // it simply equals the publication date.
     dateModified: post.updatedAt ?? post.publishedAt,
     inLanguage: "en",
-    author: { "@id": `${SITE_URL}/#organization` },
+    // A named Person outranks a company byline for the answer engines, which is
+    // the whole point of the author type in the CMS. Posts without one keep the
+    // Organization, so nothing published before this regressed.
+    author: post.author
+      ? {
+          "@type": "Person",
+          name: post.author.name,
+          ...(post.author.role ? { jobTitle: post.author.role } : {}),
+          ...(post.author.bio ? { description: post.author.bio } : {}),
+          ...(post.author.links.length
+            ? { sameAs: [...post.author.links] }
+            : {}),
+        }
+      : { "@id": `${SITE_URL}/#organization` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     ...(post.imageUrl ? { image: post.imageUrl } : {}),

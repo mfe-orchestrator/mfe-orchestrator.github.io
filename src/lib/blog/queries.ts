@@ -68,6 +68,13 @@ export const POST_BY_SLUG = `*[${PUBLISHED} && slug.current == $slug][0] {
   "characters": length(pt::text(body)),
   "coverImage": coverImage ${IMAGE},
   "categories": ${CATEGORIES},
+  "author": author->{
+    name,
+    role,
+    bio,
+    "image": image ${IMAGE},
+    "links": coalesce(links, [])
+  },
   body[] {
     ...,
     _type == "image" => ${IMAGE},

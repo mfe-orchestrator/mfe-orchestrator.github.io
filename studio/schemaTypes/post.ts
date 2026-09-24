@@ -84,6 +84,15 @@ export const post = defineType({
     }),
 
     defineField({
+      name: "author",
+      title: "Author",
+      type: "reference",
+      to: [{ type: "author" }],
+      description:
+        "Who wrote this. Left empty, the post is attributed to the project itself, as every post was before authors existed.",
+      group: "content",
+    }),
+    defineField({
       name: "categories",
       title: "Categories",
       type: "array",

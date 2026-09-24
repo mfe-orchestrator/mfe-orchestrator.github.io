@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Calendar, Clock, RefreshCw } from "lucide-react";
+import { Calendar, Clock, RefreshCw, User } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import ArticleBody from "@/components/blog/ArticleBody";
 import BlogImage from "@/components/blog/BlogImage";
@@ -125,7 +125,7 @@ export default async function PostPage({
     <>
       <JsonLd
         schema={[
-          blogPostingSchema(toPostRef(post)),
+          blogPostingSchema({ ...toPostRef(post), author: post.author }),
           breadcrumbSchema([
             { name: "Blog", path: "/blog" },
             { name: post.title, path: `/blog/${post.slug}` },
@@ -167,6 +167,13 @@ export default async function PostPage({
           )}
 
           <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+            {post.author && (
+              <span className="flex items-center gap-2">
+                <User className="h-4 w-4 text-primary" />
+                <span className="text-foreground">{post.author.name}</span>
+                {post.author.role && <span>· {post.author.role}</span>}
+              </span>
+            )}
             <span className="flex items-center gap-2">
               <Calendar className="h-4 w-4 text-primary" />
               <time dateTime={dateAttribute(post.publishedAt)}>

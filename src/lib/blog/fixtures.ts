@@ -108,6 +108,7 @@ const POSTS: Post[] = [
     coverImage: null,
     categories: [CATEGORIES[0], CATEGORIES[1]],
     seo: NO_SEO,
+    author: null,
     body: [
       block(
         "Teams adopt Module Federation to stop rebuilding the shell every time a remote changes. Then the first production incident arrives, somebody asks which version of the checkout remote is live in UAT, and nobody can answer without opening a pipeline log.",
@@ -164,6 +165,7 @@ const POSTS: Post[] = [
     coverImage: null,
     categories: [CATEGORIES[1]],
     seo: NO_SEO,
+    author: null,
     body: [
       block(
         "Backend canaries are a routing problem, so they live in the mesh. Frontend canaries are a resolution problem: the browser decides what to download, and it decides once, at boot.",

@@ -9,6 +9,7 @@ import {
   RELATED_POSTS,
 } from "./queries";
 import type {
+  Author,
   Category,
   CmsImage,
   Post,
@@ -130,6 +131,20 @@ const EMPTY_SOCIAL: SocialOverrides = {
   imageUrl: null,
 };
 
+/** The author projection, with the same image normalisation as a cover. */
+type RawAuthor = Omit<Author, "image"> & { image: CmsImage | null };
+
+function toAuthor(raw: RawAuthor | null): Author | null {
+  if (!raw?.name) return null;
+  return {
+    name: raw.name,
+    role: raw.role ?? null,
+    bio: raw.bio ?? null,
+    image: normalizeImage(raw.image),
+    links: raw.links ?? [],
+  };
+}
+
 function toSummary(raw: RawSummary): PostSummary {
   return {
     slug: raw.slug,
@@ -169,7 +184,12 @@ export async function getPost(slug: string): Promise<Post | null> {
   if (!isCmsConfigured()) return null;
 
   const raw = await query<
-    (RawSummary & { body: Post["body"]; seo: RawSeo | null }) | null
+    | (RawSummary & {
+        body: Post["body"];
+        seo: RawSeo | null;
+        author: RawAuthor | null;
+      })
+    | null
   >(POST_BY_SLUG, { slug });
   if (!raw) return null;
 
@@ -177,6 +197,7 @@ export async function getPost(slug: string): Promise<Post | null> {
     ...toSummary(raw),
     body: raw.body ?? [],
     seo: toSeo(raw.seo),
+    author: toAuthor(raw.author),
   };
 }
 
