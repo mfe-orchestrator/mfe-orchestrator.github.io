@@ -8,9 +8,9 @@ import { pageMetadata } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/structuredData";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Why We Built It — From Micro Frontend Release Pain to One-Click Rollbacks",
+  title: "Why We Built MFE Orchestrator",
   description:
-    "We split our frontend across repositories and discovered that releasing one micro frontend still required rebuilding the shell. This is the problem MFE Orchestrator was built to remove, and what changed once it did.",
+    "We split our frontend across repositories and still had to rebuild the shell to release one micro frontend. That is the problem MFE Orchestrator removes.",
   path: "/about",
   keywords: [
     "micro frontend case study",

@@ -15,7 +15,7 @@ export const metadata: Metadata = pageMetadata({
   title:
     "Micro Frontend Orchestration & Deployment | MFE Orchestrator",
   description:
-    "Deploy, version and roll back micro frontends without rebuilding the host application. Open-source control plane for Module Federation, with canary releases, multi-cloud storage and CI/CD integrations. Free to start.",
+    "Deploy, version and roll back micro frontends without rebuilding the host application. Open-source control plane for Module Federation. Free to start.",
   path: "/",
   keywords: [
     "micro frontend orchestrator",

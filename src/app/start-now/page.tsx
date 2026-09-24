@@ -9,9 +9,9 @@ import { pageMetadata } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/structuredData";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Start Free in Minutes — Hosted Console or Self-Hosted With Docker",
+  title: "Start Free — Hosted or Self-Hosted",
   description:
-    "Two ways to start orchestrating micro frontends: the free hosted console with no installation, or self-host MFE Orchestrator in your own infrastructure with Docker Compose.",
+    "Two ways to start: the free hosted console with no installation, or self-host MFE Orchestrator in your own infrastructure with Docker Compose.",
   path: "/start-now",
   keywords: [
     "self-hosted micro frontend orchestrator",

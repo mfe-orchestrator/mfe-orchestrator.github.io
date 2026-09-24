@@ -15,9 +15,9 @@ import { breadcrumbSchema, definedTermSchema } from "@/lib/structuredData";
  */
 
 export const metadata: Metadata = pageMetadata({
-  title: "What Is a Micro Frontend (MFE)? Architecture, Benefits & When to Use It",
+  title: "What Is a Micro Frontend (MFE)?",
   description:
-    "MFE stands for micro frontend: an independently built and deployed piece of a web application, combined with others at runtime. A plain definition, when to use the architecture, and what it costs you.",
+    "MFE stands for micro frontend: an independently built and deployed piece of a web app, combined with others at runtime. A plain definition, and when to use it.",
   path: "/what-is-a-micro-frontend",
   keywords: [
     "what is mfe",
@@ -126,7 +126,7 @@ export default function WhatIsAMicroFrontendPage() {
               <div className="p-2 rounded-lg bg-primary/10 text-primary">
                 <Puzzle className="h-6 w-6" />
               </div>
-              <CardTitle className="text-2xl">How a micro frontend application fits together</CardTitle>
+              <h2 className="text-2xl tracking-normal font-semibold mb-3">How does a micro frontend work?</h2>
             </div>
           </CardHeader>
           <CardContent className="space-y-4 text-muted-foreground leading-relaxed">
@@ -165,7 +165,7 @@ export default function WhatIsAMicroFrontendPage() {
                 <div className="p-2 rounded-lg bg-primary/10 text-primary">
                   <Check className="h-5 w-5" />
                 </div>
-                <CardTitle>What you gain</CardTitle>
+                <h2 className="text-lg/6 tracking-normal font-semibold mb-3">What are the benefits of micro frontends?</h2>
               </div>
             </CardHeader>
             <CardContent>
@@ -186,7 +186,7 @@ export default function WhatIsAMicroFrontendPage() {
                 <div className="p-2 rounded-lg bg-amber-500/10 text-amber-500">
                   <X className="h-5 w-5" />
                 </div>
-                <CardTitle>What it costs</CardTitle>
+                <h2 className="text-lg/6 tracking-normal font-semibold mb-3">What are the drawbacks of micro frontends?</h2>
               </div>
             </CardHeader>
             <CardContent>
@@ -208,7 +208,7 @@ export default function WhatIsAMicroFrontendPage() {
               <div className="p-2 rounded-lg bg-primary/10 text-primary">
                 <Users className="h-6 w-6" />
               </div>
-              <CardTitle className="text-2xl">When micro frontends are worth it</CardTitle>
+              <h2 className="text-2xl tracking-normal font-semibold mb-3">When should you use micro frontends?</h2>
             </div>
           </CardHeader>
           <CardContent className="space-y-4 text-muted-foreground leading-relaxed">

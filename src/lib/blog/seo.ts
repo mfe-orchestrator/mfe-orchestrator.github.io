@@ -118,4 +118,4 @@ export function toPostRefs(posts: readonly PostSummary[]): BlogPostRef[] {
 /** Used by the feed and the index metadata, so the wording stays in one place. */
 export const BLOG_TITLE = `Blog — ${SITE_NAME}`;
 export const BLOG_DESCRIPTION =
-  "Field notes on micro frontend architecture: Module Federation, versioning across environments, canary releases and rollbacks, from the team building the orchestrator.";
+  "Field notes on micro frontend architecture: Module Federation, versioning across environments, canary releases and rollbacks, from the team building it.";

@@ -9,7 +9,7 @@ import { SITE_URL, pageMetadata } from "@/lib/seo";
 import { blogIndexSchema, breadcrumbSchema } from "@/lib/structuredData";
 
 const base = pageMetadata({
-  title: "Blog — Micro Frontend Architecture, Releases and Module Federation",
+  title: "Micro Frontend Architecture Blog",
   description: BLOG_DESCRIPTION,
   path: "/blog",
   keywords: [

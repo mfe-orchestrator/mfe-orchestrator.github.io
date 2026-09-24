@@ -14,9 +14,9 @@ import { breadcrumbSchema } from "@/lib/structuredData";
  */
 
 export const metadata: Metadata = pageMetadata({
-  title: "Module Federation Without the Pain — Versioned Remotes, Zero Host Rebuilds",
+  title: "Module Federation Without a Remotes File",
   description:
-    "Module Federation loads remotes at runtime but does not decide which version to load. MFE Orchestrator replaces the hand-maintained remotes configuration with a versioned registry and serves it per environment — for Webpack and Vite.",
+    "Module Federation loads remotes at runtime but never decides which version. MFE Orchestrator serves a versioned registry per environment, Webpack and Vite.",
   path: "/module-federation",
   keywords: [
     "module federation versioning",

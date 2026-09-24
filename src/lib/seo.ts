@@ -7,6 +7,14 @@ export const DOCS_URL = "https://mfe-orchestrator.dev/documentation";
 export const QUICK_START_URL = `${DOCS_URL}/docs/quick-start`;
 export const GITHUB_URL = "https://github.com/mfe-orchestrator";
 
+/**
+ * The social card. src/app/opengraph-image.png is picked up by Next's file
+ * convention for "/" only, so every other page shipped without an og:image and
+ * previewed as a bare link on Slack, LinkedIn and the AI answer engines that
+ * render a card. Naming it here gives all of them one.
+ */
+const OG_IMAGE = `${SITE_URL}/opengraph-image.png`;
+
 export const SITE_NAME = "MFE Orchestrator";
 
 /**
@@ -82,11 +90,13 @@ export function pageMetadata({
       siteName: SITE_NAME,
       locale: "en_US",
       type: "website",
+      images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: SITE_NAME }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [OG_IMAGE],
     },
   };
 }
