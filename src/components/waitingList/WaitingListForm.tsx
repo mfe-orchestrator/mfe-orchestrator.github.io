@@ -6,6 +6,7 @@ import { Button, Input } from "@/components/design-system";
 import { Loader2, Mail, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 import { usePathname } from 'next/navigation';
+import { event } from 'nextjs-google-analytics';
 
 interface WaitingListFormContentProps {
   accessPage: string;
@@ -60,6 +61,15 @@ const WaitingListFormContent  : React.FC<WaitingListFormContentProps> = ({ acces
         throw new Error(data.error || 'Failed to join to community');
       }
       
+      // The site had no conversion event at all, so GA reported 0 key events
+      // over 90 days against real sign-ups. Fired only here, once the API has
+      // accepted the address — not on a validation error or a failed request —
+      // so the count means sign-ups and nothing else. accessPage is what ties a
+      // sign-up back to the page that earned it. event() is a no-op when gtag
+      // is absent, so a missing measurement ID cannot break the submit.
+      // Counts once marked as a key event in the GA UI.
+      event('generate_lead', { accessPage, selectedPlan });
+
       toast.success('Successfully joined to MFE orchestrator community!');
       setEmail('');
     } catch (error) {
