@@ -1,5 +1,5 @@
 import { faqs } from "./faqs";
-import { CONSOLE_URL, DOCS_URL, GITHUB_URL, PRODUCT, SITE_NAME, SITE_URL } from "./seo";
+import { CONSOLE_URL, DOCS_URL, GITHUB_URL, PRODUCT, SITE_NAME, SITE_URL, X_URL } from "./seo";
 
 /**
  * JSON-LD builders. Google reads these to understand what the product is and
@@ -15,7 +15,10 @@ export function organizationSchema() {
     name: SITE_NAME,
     url: SITE_URL,
     description: PRODUCT.definition,
-    sameAs: [GITHUB_URL],
+    // Every profile the project actually holds. An entity anchored in one
+    // place is a weak entity: these are how an answer engine confirms that the
+    // GitHub organisation, the X account and this site are one thing.
+    sameAs: [GITHUB_URL, X_URL],
   };
 }
 
