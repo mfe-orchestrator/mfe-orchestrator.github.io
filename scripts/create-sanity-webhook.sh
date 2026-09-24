@@ -102,7 +102,7 @@ payload=$(jq -n \
      },
      rule: {
        on: ["create", "update", "delete"],
-       filter: "_type == \"post\" || _type == \"category\"",
+       filter: "_type == \"post\" || _type == \"category\" || _type == \"author\"",
        projection: ("{\"event_type\": \"" + $event + "\"}")
      }
    }')
