@@ -53,9 +53,10 @@ module.exports = {
   robotsTxtOptions: {
     // The documentation is a separate Docusaurus build served under
     // /documentation, so next-sitemap — which only walks ./out — never sees it.
-    // Its 74 pages were advertised by no sitemap at all: Search Console showed
-    // them earning single-digit impressions at a CTR far above the rest of the
-    // site, i.e. wanted but never shown. Docusaurus already emits this file.
+    // Docusaurus emits its own sitemap there, and it is already submitted in
+    // Search Console directly, so this line is not what makes those pages
+    // discoverable. It names the file for every other crawler, and keeps the
+    // site's own robots.txt honest about where its content actually lives.
     additionalSitemaps: ['https://mfe-orchestrator.dev/documentation/sitemap.xml'],
     policies: [
       {
