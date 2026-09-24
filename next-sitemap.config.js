@@ -51,6 +51,12 @@ module.exports = {
     `/blog/category/${PLACEHOLDER_SLUG}`,
   ],
   robotsTxtOptions: {
+    // The documentation is a separate Docusaurus build served under
+    // /documentation, so next-sitemap — which only walks ./out — never sees it.
+    // Its 74 pages were advertised by no sitemap at all: Search Console showed
+    // them earning single-digit impressions at a CTR far above the rest of the
+    // site, i.e. wanted but never shown. Docusaurus already emits this file.
+    additionalSitemaps: ['https://mfe-orchestrator.dev/documentation/sitemap.xml'],
     policies: [
       {
         userAgent: '*',

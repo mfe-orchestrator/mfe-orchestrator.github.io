@@ -15,7 +15,7 @@ export const faqs: FAQItem[] = [
   {
     question: "What does MFE stand for?",
     answer:
-      "MFE stands for micro frontend (also written micro-frontend or microfrontend). It is a single, independently built and deployed piece of a web application — a checkout flow, a dashboard, a search widget — that is combined with other micro frontends at runtime to form one product.",
+      "MFE stands for micro frontend (also written micro-frontend or microfrontend): a single, independently built and deployed piece of a web application, combined with others at runtime to form one product.",
   },
   {
     question: "What is a micro frontend orchestrator?",

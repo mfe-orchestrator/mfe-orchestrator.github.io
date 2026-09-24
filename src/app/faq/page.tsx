@@ -13,11 +13,10 @@ import { breadcrumbSchema, faqPageSchema } from "@/lib/structuredData";
 export const metadata: Metadata = pageMetadata({
   title: "Micro Frontend Orchestration FAQ — Quick Answers Before You Start",
   description:
-    "What MFE stands for, how a micro frontend orchestrator differs from plain Module Federation, how versioning, canary releases and rollback work, and whether you can self-host.",
+    "How a micro frontend orchestrator differs from plain Module Federation, how versioning, canary releases and rollback work, and whether you can self-host.",
   path: "/faq",
   keywords: [
     "micro frontend FAQ",
-    "what does mfe stand for",
     "micro frontend orchestrator questions",
     "module federation versioning",
     "micro frontend rollback",
